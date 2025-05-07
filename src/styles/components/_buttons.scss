@@ -1,0 +1,25 @@
+// Button variants
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+
+    &-primary {
+        background-color: #0ea5e9;
+        color: #fff;
+
+        &:hover {
+            background-color: #0284c7;
+        }
+    }
+
+    &-secondary {
+        background-color: #e2e8f0;
+        color: #1e293b;
+
+        &:hover {
+            background-color: #cbd5e1;
+        }
+    }
+}

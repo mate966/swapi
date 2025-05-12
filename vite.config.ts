@@ -29,10 +29,17 @@ export default defineConfig({
         },
     },
     server: {
-        port: 3000,
+        port: 5173,
         open: true,
         cors: true,
         host: true,
+        proxy: {
+            '/api': {
+                target: 'http://localhost:3000',
+                changeOrigin: true,
+                secure: false,
+            },
+        },
     },
     build: {
         outDir: 'dist',
@@ -48,13 +55,12 @@ export default defineConfig({
             output: {
                 manualChunks: {
                     vendor: ['react', 'react-dom', 'react-router-dom'],
-                    // Możesz dodać więcej chunków dla innych bibliotek
                 },
             },
         },
     },
     preview: {
-        port: 3000,
+        port: 5173,
         open: true,
     },
 });

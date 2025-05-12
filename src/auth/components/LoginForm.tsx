@@ -4,10 +4,10 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import type { AppDispatch, RootState } from '../../store';
-import { registerSchema, type RegisterFormData } from '../schemas/auth.schema';
-import { clearError, register as registerAction } from '../store/auth.slice';
+import { loginSchema, type LoginFormData } from '../schemas/auth.schema';
+import { clearError, login } from '../store/auth.slice';
 
-export const RegisterForm = () => {
+export const LoginForm = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
     const { error, isLoading, isAuthenticated } = useSelector((state: RootState) => state.auth);
@@ -18,13 +18,11 @@ export const RegisterForm = () => {
         formState: { errors },
         reset,
         setError,
-    } = useForm<RegisterFormData>({
-        resolver: zodResolver(registerSchema),
+    } = useForm<LoginFormData>({
+        resolver: zodResolver(loginSchema),
         defaultValues: {
-            username: '',
             email: '',
             password: '',
-            confirmPassword: '',
         },
     });
 
@@ -34,17 +32,17 @@ export const RegisterForm = () => {
         }
     }, [isAuthenticated, navigate]);
 
-    const onSubmit = async (data: RegisterFormData) => {
+    const onSubmit = async (data: LoginFormData) => {
         try {
             dispatch(clearError());
-            await dispatch(registerAction(data)).unwrap();
+            await dispatch(login(data)).unwrap();
             reset();
         } catch (error) {
             if (error instanceof Error) {
                 if (error.message.includes('email')) {
                     setError('email', { message: error.message });
-                } else if (error.message.includes('username')) {
-                    setError('username', { message: error.message });
+                } else if (error.message.includes('password')) {
+                    setError('password', { message: error.message });
                 }
             }
         }
@@ -52,15 +50,9 @@ export const RegisterForm = () => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <h2>Registration</h2>
+            <h2>Login</h2>
 
             {error && <p>{error}</p>}
-
-            <div>
-                <label htmlFor="username">Username</label>
-                <input {...register('username')} type="text" id="username" />
-                {errors.username && <p>{errors.username.message}</p>}
-            </div>
 
             <div>
                 <label htmlFor="email">Email</label>
@@ -74,14 +66,8 @@ export const RegisterForm = () => {
                 {errors.password && <p>{errors.password.message}</p>}
             </div>
 
-            <div>
-                <label htmlFor="confirmPassword">Confirm Password</label>
-                <input {...register('confirmPassword')} type="password" id="confirmPassword" />
-                {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
-            </div>
-
             <button type="submit" disabled={isLoading}>
-                {isLoading ? 'Registering...' : 'Register'}
+                {isLoading ? 'Logging in...' : 'Login'}
             </button>
         </form>
     );

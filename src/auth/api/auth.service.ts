@@ -1,5 +1,5 @@
-import type { RegisterFormData } from '../schemas/auth.schema';
-import { ApiError, RegisterResponse } from './auth.types';
+import type { LoginFormData, RegisterFormData } from '../schemas/auth.schema';
+import { ApiError, LoginResponse, RegisterResponse } from './auth.types';
 import { API_ENDPOINTS } from './config';
 
 export class AuthService {
@@ -35,5 +35,25 @@ export class AuthService {
                 error.errors?.[0]?.message || 'Email verification failed. Please try again.',
             );
         }
+    }
+
+    static async login(data: LoginFormData): Promise<LoginResponse> {
+        const response = await fetch(API_ENDPOINTS.login, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+            credentials: 'include',
+        });
+
+        const responseData = await response.json();
+
+        if (!response.ok) {
+            const error = responseData as ApiError;
+            throw new Error(error.errors?.[0]?.message || 'Login failed. Please try again.');
+        }
+
+        return responseData as LoginResponse;
     }
 }

@@ -7,6 +7,16 @@ interface RegisterResponse {
     message: string;
 }
 
+interface LoginResponse {
+    user: {
+        id: string;
+        email: string;
+        username: string;
+    };
+    token: string;
+    message: string;
+}
+
 interface ApiError {
     errors: Array<{
         message: string;
@@ -14,4 +24,4 @@ interface ApiError {
     }>;
 }
 
-export type { ApiError, RegisterResponse };
+export type { ApiError, LoginResponse, RegisterResponse };

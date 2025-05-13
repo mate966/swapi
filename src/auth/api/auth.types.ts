@@ -1,4 +1,4 @@
-import type { User } from '../types/auth.types';
+import type { User } from '@/auth/types/auth.types';
 
 interface RegisterResponse {
     user: User;

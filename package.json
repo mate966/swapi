@@ -16,22 +16,22 @@
         "prepare": "husky"
     },
     "lint-staged": {
-        "*.{ts,tsx}": [
+        "*.{js,jsx,ts,tsx}": [
             "eslint --fix",
             "prettier --write"
         ],
         "*.{css,scss}": [
             "stylelint --fix",
             "prettier --write"
-        ],
-        "*.{json,md}": [
-            "prettier --write"
         ]
     },
     "dependencies": {
+        "@apollo/client": "^3.13.8",
         "@hookform/resolvers": "^5.0.1",
         "@reduxjs/toolkit": "^2.8.1",
         "@types/react-router-dom": "^5.3.3",
+        "axios": "^1.9.0",
+        "graphql": "^16.11.0",
         "react": "^19.1.0",
         "react-dom": "^19.1.0",
         "react-hook-form": "^7.56.3",

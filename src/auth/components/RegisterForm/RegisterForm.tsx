@@ -1,9 +1,10 @@
-import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { register } from '../../../store/auth.slice';
-import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { registerSchema, type RegisterFormData } from '../../schemas/auth.schema';
+
+import { registerSchema, type RegisterFormData } from '@/auth/schemas/auth.schema';
+import { register } from '@/store/slices/authSlice';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useAppDispatch, useAppSelector } from '@hooks/redux';
 
 export const RegisterForm = () => {
     const dispatch = useAppDispatch();

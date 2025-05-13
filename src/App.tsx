@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { LoginForm } from './auth/components/LoginForm/LoginForm';
 import { RegisterForm } from './auth/components/RegisterForm/RegisterForm';
 import CharacterList from './components/CharacterList/CharacterList';
+import { FilmList } from './components/FilmList/FilmList';
 
 import './App.css';
 
@@ -14,6 +15,7 @@ function App() {
                 <Route path="/register" element={<RegisterForm />} />
                 <Route path="/login" element={<LoginForm />} />
                 <Route path="/characters" element={<CharacterList />} />
+                <Route path="/films" element={<FilmList />} />
             </Routes>
         </div>
     );

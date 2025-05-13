@@ -37,8 +37,38 @@ export interface Person {
     }[];
 }
 
+export interface Film {
+    id: string;
+    title: string;
+    episodeID: number;
+    opening_crawl: string;
+    director: string;
+    producer: string;
+    release_date: string;
+    characters: {
+        id: string;
+        name: string;
+    }[];
+    planets: {
+        id: string;
+        name: string;
+    }[];
+    starships: {
+        id: string;
+        name: string;
+    }[];
+    vehicles: {
+        id: string;
+        name: string;
+    }[];
+    species: {
+        id: string;
+        name: string;
+    }[];
+}
+
 export interface PeopleResponse {
-    people: {
+    People: {
         docs: Person[];
         totalDocs: number;
         limit: number;
@@ -47,14 +77,25 @@ export interface PeopleResponse {
         pagingCounter: number;
         hasPrevPage: boolean;
         hasNextPage: boolean;
-        prevPage: number | null;
-        nextPage: number | null;
+    };
+}
+
+export interface FilmsResponse {
+    Films: {
+        docs: Film[];
+        totalDocs: number;
+        limit: number;
+        totalPages: number;
+        page: number;
+        pagingCounter: number;
+        hasPrevPage: boolean;
+        hasNextPage: boolean;
     };
 }
 
 const GET_PEOPLE = gql`
     query GetPeople($page: Int, $limit: Int) {
-        people(page: $page, limit: $limit) {
+        People(page: $page, limit: $limit) {
             docs {
                 id
                 name
@@ -93,8 +134,49 @@ const GET_PEOPLE = gql`
             pagingCounter
             hasPrevPage
             hasNextPage
-            prevPage
-            nextPage
+        }
+    }
+`;
+
+const GET_FILMS = gql`
+    query GetFilms($page: Int, $limit: Int) {
+        Films(page: $page, limit: $limit) {
+            docs {
+                id
+                title
+                episodeID
+                opening_crawl
+                director
+                producer
+                release_date
+                characters {
+                    id
+                    name
+                }
+                planets {
+                    id
+                    name
+                }
+                starships {
+                    id
+                    name
+                }
+                vehicles {
+                    id
+                    name
+                }
+                species {
+                    id
+                    name
+                }
+            }
+            totalDocs
+            limit
+            totalPages
+            page
+            pagingCounter
+            hasPrevPage
+            hasNextPage
         }
     }
 `;
@@ -105,7 +187,14 @@ export const swapiService = {
             query: GET_PEOPLE,
             variables: { page, limit },
         });
-        return data.people;
+        return data.People;
+    },
+    getFilms: async (page = 1, limit = 10) => {
+        const { data } = await client.query<FilmsResponse>({
+            query: GET_FILMS,
+            variables: { page, limit },
+        });
+        return data.Films;
     },
 };
 

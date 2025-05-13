@@ -27,7 +27,10 @@ const CharacterList: React.FC = () => {
         <div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
                 {characters.map((character: Person) => (
-                    <div key={character.id} className="bg-white rounded-lg shadow-md p-4">
+                    <div
+                        key={character.id}
+                        className="bg-white rounded-lg shadow-md p-4 text-black"
+                    >
                         <h2 className="text-xl font-bold mb-2">{character.name}</h2>
                         <div className="space-y-2">
                             <p>

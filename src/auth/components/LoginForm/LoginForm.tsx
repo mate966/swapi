@@ -1,10 +1,11 @@
-import { clearError, login } from '@/store/auth.slice';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { loginSchema, type LoginFormData } from '../../schemas/auth.schema';
+
+import { loginSchema, type LoginFormData } from '@/auth/schemas/auth.schema';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import { clearError, login } from '@/store/slices/authSlice';
 
 export const LoginForm = () => {
     const navigate = useNavigate();

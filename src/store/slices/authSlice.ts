@@ -1,15 +1,8 @@
+import { AuthService } from '@/auth/api/auth.service';
+import type { LoginResponse, RegisterResponse } from '@/auth/api/auth.types';
+import type { LoginFormData, RegisterFormData } from '@/auth/schemas/auth.schema';
+import type { AuthState } from '@/auth/types/auth.types';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { AuthService } from '../auth/api/auth.service';
-import type { LoginResponse, RegisterResponse } from '../auth/api/auth.types';
-import type { LoginFormData, RegisterFormData } from '../auth/schemas/auth.schema';
-
-interface AuthState {
-    user: LoginResponse['user'] | null;
-    token: string | null;
-    isAuthenticated: boolean;
-    isLoading: boolean;
-    error: string | null;
-}
 
 const initialState: AuthState = {
     user: null,
@@ -25,7 +18,7 @@ export const login = createAsyncThunk<LoginResponse, LoginFormData>(
         try {
             return await AuthService.login(data);
         } catch (error) {
-            return rejectWithValue(error instanceof Error ? error.message : 'Login failed');
+            return rejectWithValue(error instanceof Error ? error.message : 'Błąd logowania');
         }
     },
 );
@@ -36,7 +29,7 @@ export const register = createAsyncThunk<RegisterResponse, RegisterFormData>(
         try {
             return await AuthService.register(data);
         } catch (error) {
-            return rejectWithValue(error instanceof Error ? error.message : 'Registration failed');
+            return rejectWithValue(error instanceof Error ? error.message : 'Błąd rejestracji');
         }
     },
 );

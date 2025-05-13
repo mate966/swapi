@@ -1,4 +1,4 @@
-import type { LoginFormData, RegisterFormData } from '../schemas/auth.schema';
+import type { LoginFormData, RegisterFormData } from '@/auth/schemas/auth.schema';
 import { ApiError, LoginResponse, RegisterResponse } from './auth.types';
 import { API_ENDPOINTS } from './config';
 

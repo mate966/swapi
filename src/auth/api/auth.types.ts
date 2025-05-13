@@ -1,18 +1,12 @@
+import type { User } from '../types/auth.types';
+
 interface RegisterResponse {
-    user: {
-        id: string;
-        email: string;
-        username: string;
-    };
+    user: User;
     message: string;
 }
 
 interface LoginResponse {
-    user: {
-        id: string;
-        email: string;
-        username: string;
-    };
+    user: User;
     token: string;
     message: string;
 }

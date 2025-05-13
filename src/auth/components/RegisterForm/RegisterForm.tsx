@@ -1,19 +1,16 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import type { AppDispatch, RootState } from '../../store';
-import { registerSchema, type RegisterFormData } from '../schemas/auth.schema';
-import { clearError, register as registerAction } from '../store/auth.slice';
+import { register } from '../../../store/auth.slice';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+import { registerSchema, type RegisterFormData } from '../../schemas/auth.schema';
 
 export const RegisterForm = () => {
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
-    const dispatch = useDispatch<AppDispatch>();
-    const { error, isLoading, isAuthenticated } = useSelector((state: RootState) => state.auth);
-
+    const { isLoading, error } = useAppSelector(state => state.auth);
     const {
-        register,
+        register: registerField,
         handleSubmit,
         formState: { errors },
         reset,
@@ -28,17 +25,11 @@ export const RegisterForm = () => {
         },
     });
 
-    useEffect(() => {
-        if (isAuthenticated) {
-            navigate('/dashboard');
-        }
-    }, [isAuthenticated, navigate]);
-
     const onSubmit = async (data: RegisterFormData) => {
         try {
-            dispatch(clearError());
-            await dispatch(registerAction(data)).unwrap();
+            await dispatch(register(data)).unwrap();
             reset();
+            navigate('/login');
         } catch (error) {
             if (error instanceof Error) {
                 if (error.message.includes('email')) {
@@ -58,25 +49,25 @@ export const RegisterForm = () => {
 
             <div>
                 <label htmlFor="username">Username</label>
-                <input {...register('username')} type="text" id="username" />
+                <input {...registerField('username')} type="text" id="username" />
                 {errors.username && <p>{errors.username.message}</p>}
             </div>
 
             <div>
                 <label htmlFor="email">Email</label>
-                <input {...register('email')} type="email" id="email" />
+                <input {...registerField('email')} type="email" id="email" />
                 {errors.email && <p>{errors.email.message}</p>}
             </div>
 
             <div>
                 <label htmlFor="password">Password</label>
-                <input {...register('password')} type="password" id="password" />
+                <input {...registerField('password')} type="password" id="password" />
                 {errors.password && <p>{errors.password.message}</p>}
             </div>
 
             <div>
                 <label htmlFor="confirmPassword">Confirm Password</label>
-                <input {...register('confirmPassword')} type="password" id="confirmPassword" />
+                <input {...registerField('confirmPassword')} type="password" id="confirmPassword" />
                 {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
             </div>
 

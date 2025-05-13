@@ -1,16 +1,15 @@
+import { clearError, login } from '@/store/auth.slice';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import type { AppDispatch, RootState } from '../../store';
-import { loginSchema, type LoginFormData } from '../schemas/auth.schema';
-import { clearError, login } from '../store/auth.slice';
+import { loginSchema, type LoginFormData } from '../../schemas/auth.schema';
 
 export const LoginForm = () => {
     const navigate = useNavigate();
-    const dispatch = useDispatch<AppDispatch>();
-    const { error, isLoading, isAuthenticated } = useSelector((state: RootState) => state.auth);
+    const dispatch = useAppDispatch();
+    const { error, isLoading, isAuthenticated } = useAppSelector(state => state.auth);
 
     const {
         register,

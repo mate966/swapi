@@ -1,8 +1,15 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { AuthService } from '../api/auth.service';
-import type { LoginResponse, RegisterResponse } from '../api/auth.types';
-import type { LoginFormData, RegisterFormData } from '../schemas/auth.schema';
-import type { AuthState } from '../types/auth.types';
+import { AuthService } from '../auth/api/auth.service';
+import type { LoginResponse, RegisterResponse } from '../auth/api/auth.types';
+import type { LoginFormData, RegisterFormData } from '../auth/schemas/auth.schema';
+
+interface AuthState {
+    user: LoginResponse['user'] | null;
+    token: string | null;
+    isAuthenticated: boolean;
+    isLoading: boolean;
+    error: string | null;
+}
 
 const initialState: AuthState = {
     user: null,

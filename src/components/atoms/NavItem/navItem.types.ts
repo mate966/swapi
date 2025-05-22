@@ -2,13 +2,27 @@ export interface NavLink {
     type: 'reference';
     reference?: {
         value: {
-            slug: string;
+            pageId: string;
+            pageTitle: string;
+            pageSlug: string;
         };
     };
-    label: string;
+    linkLabel: string;
+}
+
+export interface SubNavLink {
+    type: 'reference';
+    reference?: {
+        value: {
+            subPageId: string;
+            subPageTitle: string;
+            subPageSlug: string;
+        };
+    };
+    subLinkLabel: string;
 }
 
 export interface NavItemProps {
     link: NavLink;
-    subnav?: NavItemProps[];
+    subnav?: SubNavLink[];
 }

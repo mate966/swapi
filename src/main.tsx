@@ -2,21 +2,18 @@ import { ApolloProvider } from '@apollo/client';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import { RouterProvider } from 'react-router-dom';
+import './index.css';
+import { router } from './routes';
 import { client } from './services/api/api';
 import { store } from './store';
 
-import App from './App';
-import './index.css';
-
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
-        <BrowserRouter>
-            <Provider store={store}>
-                <ApolloProvider client={client}>
-                    <App />
-                </ApolloProvider>
-            </Provider>
-        </BrowserRouter>
+        <Provider store={store}>
+            <ApolloProvider client={client}>
+                <RouterProvider router={router} />
+            </ApolloProvider>
+        </Provider>
     </StrictMode>,
 );

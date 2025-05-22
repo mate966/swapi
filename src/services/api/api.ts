@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache, createHttpLink, from, gql } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { authService } from '../auth/auth';
-import { HeaderResponse } from './api.types';
+import { HeaderResponse, PagesResponse } from './api.types';
 const httpLink = createHttpLink({
     uri: import.meta.env.VITE_PAYLOAD_API_URL + '/graphql',
 });
@@ -40,11 +40,46 @@ const GET_Header = gql`
     }
 `;
 
+const GET_Page = gql`
+    query GetPage($slug: String) {
+        Pages(where: { slug: { equals: $slug } }) {
+            docs {
+                title
+                content {
+                    ... on HeroBlock {
+                        blockType
+                        heroTitle: title
+                        description
+                        image {
+                            url
+                            alt
+                        }
+                    }
+                    ... on TextBlock {
+                        blockType
+                        textTitle: title
+                        text
+                    }
+                }
+                slug
+            }
+        }
+    }
+`;
+
 export const swapiService = {
     getHeader: async () => {
         const { data } = await client.query<HeaderResponse>({
             query: GET_Header,
         });
         return data.Headers.docs[0];
+    },
+
+    getPage: async (slug: string) => {
+        const { data } = await client.query<PagesResponse>({
+            query: GET_Page,
+            variables: { slug },
+        });
+        return data.Pages.docs[0];
     },
 };

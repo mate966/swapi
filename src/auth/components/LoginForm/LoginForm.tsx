@@ -4,8 +4,8 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
 import { loginSchema, type LoginFormData } from '@/auth/schemas/auth.schema';
-import { useAppDispatch, useAppSelector } from '@/hooks/redux';
-import { clearError, login } from '@/store/slices/authSlice';
+import { useAppDispatch, useAppSelector } from '@/hooks/useRedux';
+import { clearError, login } from '@/store/slices/authSlice/authSlice';
 
 export const LoginForm = () => {
     const navigate = useNavigate();

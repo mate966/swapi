@@ -1,7 +1,6 @@
-import { AuthService } from '@/auth/api/auth.service';
-import type { LoginResponse, RegisterResponse } from '@/auth/api/auth.types';
-import type { LoginFormData, RegisterFormData } from '@/auth/schemas/auth.schema';
-import type { AuthState } from '@/auth/types/auth.types';
+import { AuthService } from '@/services/auth/auth';
+import type { LoginFormData, RegisterFormData } from '@/services/auth/auth.schema';
+import type { AuthState, LoginResponse, RegisterResponse } from '@/services/auth/auth.types';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState: AuthState = {

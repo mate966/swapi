@@ -1,24 +1,15 @@
-import { Route, Routes } from 'react-router-dom';
-import { LoginForm } from './auth/components/LoginForm/LoginForm';
-import { RegisterForm } from './auth/components/RegisterForm/RegisterForm';
-import CharacterList from './components/CharacterList/CharacterList';
-import { FilmList } from './components/FilmList/FilmList';
+import { Header } from '@/components/scaffold/Header/Header';
+import React from 'react';
 
-import './App.css';
-
-function App() {
+const App: React.FC = () => {
     return (
-        <div className="container mx-auto p-4">
-            <h1 className="text-3xl font-bold mb-8">SWAPI App</h1>
-            <Routes>
-                <Route path="/" element={<RegisterForm />} />
-                <Route path="/register" element={<RegisterForm />} />
-                <Route path="/login" element={<LoginForm />} />
-                <Route path="/characters" element={<CharacterList />} />
-                <Route path="/films" element={<FilmList />} />
-            </Routes>
-        </div>
+        <>
+            <Header />
+            <main>
+                <h1>Hello World</h1>
+            </main>
+        </>
     );
-}
+};
 
 export default App;

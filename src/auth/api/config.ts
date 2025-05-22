@@ -1,4 +1,6 @@
-export const API_URL = import.meta.env.VITE_PAYLOAD_API_URL || 'http://localhost:3000/api';
+import SECRETS from '@/secrets';
+
+export const API_URL = SECRETS.PAYLOAD_API_URL || 'http://localhost:3000/api';
 
 export const API_ENDPOINTS = {
     register: `${API_URL}/users`,

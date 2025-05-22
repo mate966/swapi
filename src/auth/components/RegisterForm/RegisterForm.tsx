@@ -2,9 +2,9 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
 import { registerSchema, type RegisterFormData } from '@/auth/schemas/auth.schema';
-import { register } from '@/store/slices/authSlice';
+import { register } from '@/store/slices/authSlice/authSlice';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useAppDispatch, useAppSelector } from '@hooks/redux';
+import { useAppDispatch, useAppSelector } from '@hooks/useRedux';
 
 export const RegisterForm = () => {
     const dispatch = useAppDispatch();

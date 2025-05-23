@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 // import authReducer from './slices/authSlice/authSlice';
 import globalDataReducer from './slices/globalDataSlice/globalDataSlice';
 // import pagesReducer from './slices/pagesSlice';
-import headerReducer from './slices/headerSlice/headerSlice';
+// import headerReducer from './slices/headerSlice/headerSlice';
 
 export const store = configureStore({
     reducer: {
@@ -10,7 +10,7 @@ export const store = configureStore({
         // characters: charactersReducer,
         // films: filmsReducer,
         globalData: globalDataReducer,
-        header: headerReducer,
+        // header: headerReducer,
         // pages: pagesReducer,
     },
 });

@@ -6,6 +6,7 @@ import { GlobalDataState } from './globalDataSlice.types';
 const initialState: GlobalDataState = {
     data: {
         header: null,
+        footer: null,
     },
     loading: false,
     error: null,
@@ -16,21 +17,46 @@ const GET_GLOBAL_DATA = gql`
     query GetGlobalData {
         Header {
             nav {
-                link {
-                    type
-                    reference {
-                        relationTo
-                        value {
-                            ... on Page {
-                                id
-                                title
-                                slug
+                navigation {
+                    link {
+                        type
+                        reference {
+                            relationTo
+                            value {
+                                ... on Page {
+                                    id
+                                    title
+                                    slug
+                                }
                             }
                         }
+                        label
                     }
-                    label
+                    subnav {
+                        link {
+                            type
+                            reference {
+                                relationTo
+                                value {
+                                    ... on Page {
+                                        id
+                                        title
+                                        slug
+                                    }
+                                }
+                            }
+                            label
+                        }
+                    }
                 }
-                subnav {
+            }
+        }
+        Footer {
+            title
+            copy
+            copyright
+            nav {
+                navigation {
                     link {
                         type
                         reference {
@@ -47,6 +73,25 @@ const GET_GLOBAL_DATA = gql`
                     }
                 }
             }
+            socials {
+                social {
+                    link {
+                        type
+                        reference {
+                            relationTo
+                            value {
+                                ... on Page {
+                                    id
+                                    title
+                                    slug
+                                }
+                            }
+                        }
+                        label
+                    }
+                    icon
+                }
+            }
         }
     }
 `;
@@ -60,6 +105,7 @@ export const fetchGlobalData = createAsyncThunk(
             });
             return {
                 header: data.Header,
+                footer: data.Footer,
             };
         } catch (error) {
             console.error('fetchGlobalData - błąd:', error);

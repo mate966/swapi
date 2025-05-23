@@ -1,7 +1,8 @@
-import { Header } from '@/services/api/api.types';
+import { Footer, Header } from '@/services/api/api.types';
 
 export interface GlobalData {
     header: Header | null;
+    footer: Footer | null;
 }
 
 export interface GlobalDataState {

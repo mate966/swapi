@@ -14,6 +14,7 @@ export const useGlobalData = () => {
 
     return {
         header: data.header,
+        footer: data.footer,
         loading,
         error,
     };

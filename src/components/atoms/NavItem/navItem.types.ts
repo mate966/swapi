@@ -1,28 +1,19 @@
 export interface NavLink {
-    type: 'reference';
-    reference?: {
+    type: string;
+    reference: {
+        relationTo: string;
         value: {
-            pageId: string;
-            pageTitle: string;
-            pageSlug: string;
+            id: string;
+            title: string;
+            slug: string;
         };
-    };
-    linkLabel: string;
-}
-
-export interface SubNavLink {
-    type: 'reference';
-    reference?: {
-        value: {
-            subPageId: string;
-            subPageTitle: string;
-            subPageSlug: string;
-        };
-    };
-    subLinkLabel: string;
+    } | null;
+    label: string | null;
 }
 
 export interface NavItemProps {
-    link: NavLink;
-    subnav?: SubNavLink[];
+    navigation: {
+        link: NavLink;
+        subnav: NavLink[];
+    };
 }

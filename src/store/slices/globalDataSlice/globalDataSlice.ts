@@ -73,24 +73,12 @@ const GET_GLOBAL_DATA = gql`
                     }
                 }
             }
-            socials {
-                social {
-                    link {
-                        type
-                        reference {
-                            relationTo
-                            value {
-                                ... on Page {
-                                    id
-                                    title
-                                    slug
-                                }
-                            }
-                        }
-                        label
-                    }
-                    icon
+            social {
+                link {
+                    url
+                    newTab
                 }
+                icon
             }
         }
     }

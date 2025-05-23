@@ -1,7 +1,7 @@
+import { Cta } from '@/components/organisms/Cta/Cta';
+import { Hero } from '@/components/organisms/Hero/Hero';
+import { Text } from '@/components/organisms/Text/Text';
 import { ModuleComponent, ModuleType } from '@/types/module.types';
-import { Cta } from '../components/molecules/Cta/Cta';
-import { Hero } from '../components/molecules/Hero/Hero';
-import { Text } from '../components/molecules/Text/Text';
 import { CtaBlock, HeroBlock, TextBlock } from '../services/api/api.types';
 
 export const getModule = (block: ModuleType): ModuleComponent<ModuleType> | null => {

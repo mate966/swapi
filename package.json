@@ -28,6 +28,7 @@
     "dependencies": {
         "@apollo/client": "^3.13.8",
         "@hookform/resolvers": "^5.0.1",
+        "@payloadcms/richtext-lexical": "^3.39.1",
         "@reduxjs/toolkit": "^2.8.1",
         "axios": "^1.9.0",
         "graphql": "^16.11.0",
@@ -36,6 +37,7 @@
         "react-hook-form": "^7.56.3",
         "react-redux": "^9.2.0",
         "react-router-dom": "^7.5.3",
+        "xss": "^1.0.15",
         "zod": "^3.24.4"
     },
     "devDependencies": {

@@ -1,5 +1,6 @@
 import { NavItem } from '@/components/atoms/NavItem/NavItem';
 import { NavItemProps } from '@/components/atoms/NavItem/navItem.types';
+import Icon from '@/components/ui/Icon';
 import { useGlobalData } from '@/hooks/useGlobalData';
 
 export const Footer = () => {
@@ -8,8 +9,6 @@ export const Footer = () => {
     if (loading || error || !footer) {
         return null;
     }
-
-    console.log(footer.socials);
 
     return (
         <footer className="bg-gray-900 text-white py-12">
@@ -31,22 +30,21 @@ export const Footer = () => {
                     <div>
                         <h3 className="text-lg font-semibold mb-4">Social Media</h3>
                         <ul className="flex space-x-4">
-                            {footer.socials.map((item, index) => (
-                                <li key={index}>
-                                    {/* {item.social} */}
-                                    {/* <Link
-                                        to={item.social.link.reference.value.slug}
-                                        className="text-gray-400 hover:text-white transition-colors"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    > */}
-                                    {/* <span className="sr-only">{item.social.link.label}</span> */}
-                                    {/* <span
-                                            dangerouslySetInnerHTML={{ __html: item.social.icon }}
-                                        /> */}
-                                    {/* </Link> */}
-                                </li>
-                            ))}
+                            {footer.social.map((item, index) => {
+                                const { link, icon } = item;
+                                return (
+                                    <li key={index}>
+                                        <a
+                                            href={link.url}
+                                            className="text-gray-400 hover:text-white transition-colors"
+                                            target={link.newTab ? '_blank' : undefined}
+                                            rel={link.newTab ? 'noopener noreferrer' : undefined}
+                                        >
+                                            {icon && <Icon icon={icon} />}
+                                        </a>
+                                    </li>
+                                );
+                            })}
                         </ul>
                     </div>
                 </div>

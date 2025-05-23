@@ -6,6 +6,11 @@ export interface NavLink {
     subItems?: NavLink[];
 }
 
+export interface SocialLink {
+    url: string;
+    newTab?: boolean;
+}
+
 export interface Header {
     nav: NavItemProps[];
     id: string;
@@ -19,21 +24,8 @@ export interface HeaderResponse {
 }
 
 export interface SocialItem {
-    social: {
-        link: {
-            type: string;
-            reference: {
-                relationTo: string;
-                value: {
-                    id: string;
-                    title: string;
-                    slug: string;
-                };
-            };
-            label: string;
-        };
-        icon: string;
-    };
+    link: SocialLink;
+    icon: string;
 }
 
 export interface Footer {
@@ -41,23 +33,7 @@ export interface Footer {
     copy: string;
     copyright: string;
     nav: NavItemProps[];
-    socials: {
-        social: {
-            link: {
-                type: string;
-                reference: {
-                    relationTo: string;
-                    value: {
-                        id: string;
-                        title: string;
-                        slug: string;
-                    };
-                };
-                label: string;
-            };
-            icon: string;
-        };
-    }[];
+    social: SocialItem[];
     id: string;
 }
 

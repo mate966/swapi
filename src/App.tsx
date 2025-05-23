@@ -1,6 +1,8 @@
-import { Header } from '@/components/scaffold/Header/Header';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+
+import { Header } from '@/components/scaffold/Header/Header';
+import { Footer } from './components/scaffold/Footer/Footer';
 
 const App: React.FC = () => {
     return (
@@ -9,6 +11,7 @@ const App: React.FC = () => {
             <main className="pt-16">
                 <Outlet />
             </main>
+            <Footer />
         </>
     );
 };

@@ -18,6 +18,49 @@ export interface HeaderResponse {
     };
 }
 
+export interface SocialItem {
+    social: {
+        link: {
+            type: string;
+            reference: {
+                relationTo: string;
+                value: {
+                    id: string;
+                    title: string;
+                    slug: string;
+                };
+            };
+            label: string;
+        };
+        icon: string;
+    };
+}
+
+export interface Footer {
+    title: string;
+    copy: string;
+    copyright: string;
+    nav: NavItemProps[];
+    socials: {
+        social: {
+            link: {
+                type: string;
+                reference: {
+                    relationTo: string;
+                    value: {
+                        id: string;
+                        title: string;
+                        slug: string;
+                    };
+                };
+                label: string;
+            };
+            icon: string;
+        };
+    }[];
+    id: string;
+}
+
 export interface HeroBlock {
     blockType: string;
     heroTitle: string;

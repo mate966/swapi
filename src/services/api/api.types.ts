@@ -19,8 +19,8 @@ export interface HeaderResponse {
 }
 
 export interface HeroBlock {
-    blockType: 'hero';
-    title: string;
+    blockType: string;
+    heroTitle: string;
     description?: string;
     image?: {
         url: string;
@@ -29,12 +29,30 @@ export interface HeroBlock {
 }
 
 export interface TextBlock {
-    blockType: 'text';
-    title: string;
+    blockType: string;
+    textTitle: string;
     text: RichText;
 }
 
-export type PageContent = HeroBlock | TextBlock;
+export interface CtaBlock {
+    blockType: string;
+    ctaTitle: string;
+    copy: string;
+    link: {
+        type: string;
+        reference: {
+            relationTo: string;
+            value: {
+                id: string;
+                title: string;
+                slug: string;
+            };
+        };
+        label: string;
+    };
+}
+
+export type PageContent = HeroBlock | TextBlock | CtaBlock;
 
 export interface Page {
     title: string;

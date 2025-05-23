@@ -1,7 +1,8 @@
 import { ApolloClient, InMemoryCache, createHttpLink, from, gql } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { authService } from '../auth/auth';
-import { HeaderResponse, PagesResponse } from './api.types';
+import { PagesResponse } from './api.types';
+
 const httpLink = createHttpLink({
     uri: import.meta.env.VITE_PAYLOAD_API_URL + '/graphql',
 });
@@ -20,25 +21,6 @@ export const client = new ApolloClient({
     link: from([authLink, httpLink]),
     cache: new InMemoryCache(),
 });
-
-const GET_Header = gql`
-    query GetHeader {
-        Headers {
-            docs {
-                id
-                title
-                items {
-                    label
-                    url
-                    subItems {
-                        label
-                        url
-                    }
-                }
-            }
-        }
-    }
-`;
 
 const GET_Page = gql`
     query GetPage($slug: String) {
@@ -60,6 +42,25 @@ const GET_Page = gql`
                         textTitle: title
                         text
                     }
+                    ... on CtaBlock {
+                        blockType
+                        ctaTitle: title
+                        copy
+                        link {
+                            type
+                            reference {
+                                relationTo
+                                value {
+                                    ... on Page {
+                                        id
+                                        title
+                                        slug
+                                    }
+                                }
+                            }
+                            label
+                        }
+                    }
                 }
                 slug
             }
@@ -68,13 +69,6 @@ const GET_Page = gql`
 `;
 
 export const swapiService = {
-    getHeader: async () => {
-        const { data } = await client.query<HeaderResponse>({
-            query: GET_Header,
-        });
-        return data.Headers.docs[0];
-    },
-
     getPage: async (slug: string) => {
         const { data } = await client.query<PagesResponse>({
             query: GET_Page,

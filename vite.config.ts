@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react';
 import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import { defineConfig } from 'vite';
+import graphqlLoader from 'vite-plugin-graphql-loader';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -11,7 +12,8 @@ const __dirname = dirname(__filename);
 // https://vitejs.dev/config/
 export default defineConfig({
     base: '/',
-    plugins: [react()],
+    plugins: [react(), graphqlLoader()],
+
     resolve: {
         alias: {
             '@': resolve(__dirname, './src'),

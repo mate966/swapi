@@ -71,7 +71,13 @@ export interface CtaBlock {
     };
 }
 
-export type PageContent = HeroBlock | TextBlock | CtaBlock;
+export interface QuoteBlock {
+    blockType: string;
+    quote: string;
+    author: string;
+}
+
+export type PageContent = HeroBlock | TextBlock | CtaBlock | QuoteBlock;
 
 export interface Page {
     title: string;

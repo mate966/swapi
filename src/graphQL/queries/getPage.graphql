@@ -41,6 +41,18 @@ query GetPage($slug: String) {
                     quote
                     author
                 }
+                ... on ImageBlock {
+                    blockType
+                    imageDesktop {
+                        url
+                        alt
+                    }
+                    imageMobile {
+                        url
+                        alt
+                    }
+                    caption
+                }
             }
             slug
         }

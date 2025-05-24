@@ -1,9 +1,11 @@
 import { Cta } from '@/components/organisms/Cta/Cta';
 import { Hero } from '@/components/organisms/Hero/Hero';
+import { Image } from '@/components/organisms/Image/Image';
 import { Quote } from '@/components/organisms/Quote/Quote';
 import { Text } from '@/components/organisms/Text/Text';
+
 import { ModuleComponent, ModuleType } from '@/types/module.types';
-import { CtaBlock, HeroBlock, QuoteBlock, TextBlock } from '../services/api/api.types';
+import { CtaBlock, HeroBlock, ImageBlock, QuoteBlock, TextBlock } from '../services/api/api.types';
 
 export const getModule = (block: ModuleType): ModuleComponent<ModuleType> | null => {
     switch (block.blockType) {
@@ -30,6 +32,12 @@ export const getModule = (block: ModuleType): ModuleComponent<ModuleType> | null
                 type: 'quote_block',
                 component: Quote,
                 props: block as QuoteBlock,
+            } as ModuleComponent<ModuleType>;
+        case 'image_block':
+            return {
+                type: 'image_block',
+                component: Image,
+                props: block as ImageBlock,
             } as ModuleComponent<ModuleType>;
         default:
             return null;

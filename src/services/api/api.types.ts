@@ -77,7 +77,20 @@ export interface QuoteBlock {
     author: string;
 }
 
-export type PageContent = HeroBlock | TextBlock | CtaBlock | QuoteBlock;
+export interface ImageBlock {
+    blockType: string;
+    imageDesktop: {
+        url: string;
+        alt: string;
+    };
+    imageMobile: {
+        url: string;
+        alt: string;
+    };
+    caption: string;
+}
+
+export type PageContent = HeroBlock | TextBlock | CtaBlock | QuoteBlock | ImageBlock;
 
 export interface Page {
     title: string;

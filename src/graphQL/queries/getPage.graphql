@@ -1,0 +1,48 @@
+query GetPage($slug: String) {
+    Pages(where: { slug: { equals: $slug } }) {
+        docs {
+            title
+            content {
+                ... on HeroBlock {
+                    blockType
+                    heroTitle: title
+                    description
+                    image {
+                        url
+                        alt
+                    }
+                }
+                ... on TextBlock {
+                    blockType
+                    textTitle: title
+                    text
+                }
+                ... on CtaBlock {
+                    blockType
+                    ctaTitle: title
+                    copy
+                    link {
+                        type
+                        reference {
+                            relationTo
+                            value {
+                                ... on Page {
+                                    id
+                                    title
+                                    slug
+                                }
+                            }
+                        }
+                        label
+                    }
+                }
+                ... on QuoteBlock {
+                    blockType
+                    quote
+                    author
+                }
+            }
+            slug
+        }
+    }
+}

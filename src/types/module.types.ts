@@ -1,6 +1,6 @@
-import { CtaBlock, HeroBlock, QuoteBlock, TextBlock } from '@/services/api/api.types';
+import { CtaBlock, HeroBlock, ImageBlock, QuoteBlock, TextBlock } from '@/services/api/api.types';
 
-export type ModuleType = HeroBlock | TextBlock | CtaBlock | QuoteBlock;
+export type ModuleType = HeroBlock | TextBlock | CtaBlock | QuoteBlock | ImageBlock;
 
 export type ModuleComponent<T extends ModuleType> = {
     type: string;

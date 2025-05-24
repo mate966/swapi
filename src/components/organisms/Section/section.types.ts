@@ -1,6 +1,6 @@
-import { CtaBlock, HeroBlock, TextBlock } from '@/services/api/api.types';
+import { CtaBlock, HeroBlock, ImageBlock, QuoteBlock, TextBlock } from '@/services/api/api.types';
 
 export type SectionProps = {
-    block: HeroBlock | TextBlock | CtaBlock;
+    block: HeroBlock | TextBlock | CtaBlock | QuoteBlock | ImageBlock;
     index: number;
 };

@@ -1,17 +1,17 @@
 import { CtaBlock } from '@/services/api/api.types';
 
-export const Cta = ({ block }: { block: CtaBlock }) => {
+export const Cta = ({ block: { ctaTitle, copy, link } }: { block: CtaBlock }) => {
     return (
         <div className="bg-gray-900 text-white py-20">
             <div className="container mx-auto px-4">
-                <h2 className="text-4xl font-bold mb-4">{block.ctaTitle}</h2>
+                <h2 className="text-4xl font-bold mb-4">{ctaTitle}</h2>
             </div>
             <div className="container mx-auto px-4">
-                <p className="text-xl">{block.copy}</p>
+                <p className="text-xl">{copy}</p>
             </div>
             <div className="container mx-auto px-4">
-                <a href={`/${block.link.reference.value.slug}`} className="text-xl">
-                    {block.link.label}
+                <a href={`/${link.reference.value.slug}`} className="text-xl">
+                    {link.label}
                 </a>
             </div>
         </div>

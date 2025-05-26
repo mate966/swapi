@@ -1,20 +1,20 @@
 import { ResponsiveImage } from '@/components/molecules/Image/ResponsiveImage';
 import { ImageBlock } from '@/services/api/api.types';
 
-export const Image = ({ block }: { block: ImageBlock }) => {
-    console.log(block);
+export const Image = ({
+    block: {
+        image: { imageDesktop, imageMobile },
+    },
+}: {
+    block: ImageBlock;
+}) => {
     return (
         <>
-            {block.imageDesktop && (
+            {imageDesktop && (
                 <ResponsiveImage
-                    srcDesktop={block.imageDesktop?.webpUrl || block.imageDesktop?.url || ''}
-                    srcMobile={
-                        block.imageMobile?.webpUrl ||
-                        block.imageMobile?.url ||
-                        block.imageDesktop?.url ||
-                        ''
-                    }
-                    alt={block.imageDesktop?.alt || 'Image'}
+                    srcDesktop={imageDesktop?.webpUrl || imageDesktop?.url || ''}
+                    srcMobile={imageMobile?.webpUrl || imageMobile?.url || imageDesktop?.url || ''}
+                    alt={imageDesktop?.alt || 'Image'}
                 />
             )}
         </>

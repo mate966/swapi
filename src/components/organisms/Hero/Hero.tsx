@@ -1,25 +1,27 @@
 import { ResponsiveImage } from '@/components/molecules/Image/ResponsiveImage';
 import { HeroBlock } from '@/services/api/api.types';
 
-export const Hero = ({ block }: { block: HeroBlock }) => {
-    console.log(block);
+export const Hero = ({
+    block: {
+        heroTitle,
+        description,
+        background: { imageDesktop, imageMobile },
+    },
+}: {
+    block: HeroBlock;
+}) => {
     return (
         <div className="relative bg-gray-900 text-white py-20">
-            {block.imageDesktop && (
+            {imageDesktop && (
                 <ResponsiveImage
-                    srcDesktop={block.imageDesktop?.webpUrl || block.imageDesktop?.url || ''}
-                    srcMobile={
-                        block.imageMobile?.webpUrl ||
-                        block.imageMobile?.url ||
-                        block.imageDesktop?.url ||
-                        ''
-                    }
-                    alt={block.imageDesktop?.alt || 'Image'}
+                    srcDesktop={imageDesktop?.webpUrl || imageDesktop?.url || ''}
+                    srcMobile={imageMobile?.webpUrl || imageMobile?.url || imageDesktop?.url || ''}
+                    alt={imageDesktop?.alt || 'Image'}
                 />
             )}
             <div className="relative container mx-auto px-4">
-                <h2 className="text-4xl font-bold mb-4">{block.heroTitle}</h2>
-                {block.description && <p className="text-xl">{block.description}</p>}
+                <h2 className="text-4xl font-bold mb-4">{heroTitle}</h2>
+                {description && <p className="text-xl">{description}</p>}
             </div>
         </div>
     );

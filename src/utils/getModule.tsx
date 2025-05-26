@@ -4,8 +4,16 @@ import { Image } from '@/components/organisms/Image/Image';
 import { Quote } from '@/components/organisms/Quote/Quote';
 import { Text } from '@/components/organisms/Text/Text';
 
+import { About } from '@/components/organisms/About.tsx/About';
 import { ModuleComponent, ModuleType } from '@/types/module.types';
-import { CtaBlock, HeroBlock, ImageBlock, QuoteBlock, TextBlock } from '../services/api/api.types';
+import {
+    AboutBlock,
+    CtaBlock,
+    HeroBlock,
+    ImageBlock,
+    QuoteBlock,
+    TextBlock,
+} from '../services/api/api.types';
 
 export const getModule = (block: ModuleType): ModuleComponent<ModuleType> | null => {
     switch (block.blockType) {
@@ -38,6 +46,12 @@ export const getModule = (block: ModuleType): ModuleComponent<ModuleType> | null
                 type: 'image_block',
                 component: Image,
                 props: block as ImageBlock,
+            } as ModuleComponent<ModuleType>;
+        case 'about_block':
+            return {
+                type: 'about_block',
+                component: About,
+                props: block as AboutBlock,
             } as ModuleComponent<ModuleType>;
         default:
             return null;

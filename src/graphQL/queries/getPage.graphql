@@ -7,15 +7,17 @@ query GetPage($slug: String) {
                     blockType
                     heroTitle: title
                     description
-                    imageDesktop {
-                        url
-                        alt
-                        webpUrl
-                    }
-                    imageMobile {
-                        url
-                        alt
-                        webpUrl
+                    background {
+                        imageDesktop {
+                            url
+                            alt
+                            webpUrl
+                        }
+                        imageMobile {
+                            url
+                            alt
+                            webpUrl
+                        }
                     }
                 }
                 ... on TextBlock {
@@ -49,17 +51,35 @@ query GetPage($slug: String) {
                 }
                 ... on ImageBlock {
                     blockType
-                    imageDesktop {
-                        url
-                        alt
-                        webpUrl
+                    image {
+                        imageDesktop {
+                            url
+                            alt
+                            webpUrl
+                        }
+                        imageMobile {
+                            url
+                            alt
+                            webpUrl
+                        }
                     }
-                    imageMobile {
-                        url
-                        alt
-                        webpUrl
+                }
+                ... on AboutBlock {
+                    blockType
+                    title
+                    text
+                    image {
+                        imageDesktop {
+                            url
+                            alt
+                            webpUrl
+                        }
+                        imageMobile {
+                            url
+                            alt
+                            webpUrl
+                        }
                     }
-                    caption
                 }
             }
             slug

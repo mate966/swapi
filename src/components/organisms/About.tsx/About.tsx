@@ -1,3 +1,4 @@
+import { LinkItem } from '@/components/atoms/LinkItem/LinkItem';
 import TextXss from '@/components/atoms/TextXss/TextXss';
 import { ResponsiveImage } from '@/components/molecules/Image/ResponsiveImage';
 import { AboutBlock } from '@/services/api/api.types';
@@ -8,6 +9,7 @@ export const About = ({
         title,
         text,
         image: { imageDesktop, imageMobile },
+        aboutLink,
     },
 }: {
     block: AboutBlock;
@@ -23,6 +25,9 @@ export const About = ({
                 srcMobile={imageMobile?.webpUrl || imageMobile?.url || imageDesktop?.url || ''}
                 alt={imageDesktop?.alt || 'Image'}
             />
+            <div className="container mx-auto px-4">
+                <LinkItem {...aboutLink} />
+            </div>
         </div>
     );
 };

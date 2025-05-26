@@ -34,18 +34,7 @@ export interface CtaBlock {
     blockType: string;
     ctaTitle: string;
     copy: string;
-    link: {
-        type: string;
-        reference: {
-            relationTo: string;
-            value: {
-                id: string;
-                title: string;
-                slug: string;
-            };
-        };
-        label: string;
-    };
+    link: Link;
 }
 
 export interface QuoteBlock {
@@ -65,6 +54,7 @@ export interface AboutBlock {
     title: string;
     text: RichText;
     image: Image;
+    aboutLink: Link;
 }
 
 export type PageContent = HeroBlock | TextBlock | CtaBlock | QuoteBlock | ImageBlock | AboutBlock;
@@ -127,4 +117,19 @@ export type RichText = {
 export interface SocialItem {
     link: SocialLink;
     icon: string;
+}
+
+export interface Link {
+    type: string;
+    reference: {
+        relationTo: string;
+        value: {
+            id: string;
+            title: string;
+            slug: string;
+        };
+    };
+    url: string;
+    newTab: boolean;
+    label: string;
 }

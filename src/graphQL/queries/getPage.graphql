@@ -41,6 +41,8 @@ query GetPage($slug: String) {
                                 }
                             }
                         }
+                        url
+                        newTab
                         label
                     }
                 }
@@ -79,6 +81,22 @@ query GetPage($slug: String) {
                             alt
                             webpUrl
                         }
+                    }
+                    aboutLink: link {
+                        type
+                        reference {
+                            relationTo
+                            value {
+                                ... on Page {
+                                    id
+                                    title
+                                    slug
+                                }
+                            }
+                        }
+                        url
+                        newTab
+                        label
                     }
                 }
             }

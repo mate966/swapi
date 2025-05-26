@@ -1,33 +1,12 @@
 import { NavItemProps } from '@/components/atoms/NavItem/navItem.types';
 
-export interface NavLink {
-    label: string;
-    url: string;
-    subItems?: NavLink[];
-}
-
-export interface SocialLink {
-    url: string;
-    newTab?: boolean;
-}
+// Globals
 
 export interface Header {
     nav: NavItemProps[];
     id: string;
     title: string;
 }
-
-export interface HeaderResponse {
-    Headers: {
-        docs: Header[];
-    };
-}
-
-export interface SocialItem {
-    link: SocialLink;
-    icon: string;
-}
-
 export interface Footer {
     title: string;
     copy: string;
@@ -37,20 +16,12 @@ export interface Footer {
     id: string;
 }
 
+// Blocks
 export interface HeroBlock {
     blockType: string;
     heroTitle: string;
     description?: string;
-    imageDesktop: {
-        url: string;
-        alt: string;
-        webpUrl: string;
-    };
-    imageMobile: {
-        url: string;
-        alt: string;
-        webpUrl: string;
-    };
+    background: Image;
 }
 
 export interface TextBlock {
@@ -85,20 +56,20 @@ export interface QuoteBlock {
 
 export interface ImageBlock {
     blockType: string;
-    imageDesktop: {
-        url: string;
-        alt: string;
-        webpUrl: string;
-    };
-    imageMobile: {
-        url: string;
-        alt: string;
-        webpUrl: string;
-    };
+    image: Image;
     caption: string;
 }
 
-export type PageContent = HeroBlock | TextBlock | CtaBlock | QuoteBlock | ImageBlock;
+export interface AboutBlock {
+    blockType: string;
+    title: string;
+    text: RichText;
+    image: Image;
+}
+
+export type PageContent = HeroBlock | TextBlock | CtaBlock | QuoteBlock | ImageBlock | AboutBlock;
+
+// Pages
 
 export interface Page {
     title: string;
@@ -109,6 +80,32 @@ export interface Page {
 export interface PagesResponse {
     Pages: {
         docs: Page[];
+    };
+}
+
+// Fields
+
+export interface NavLink {
+    label: string;
+    url: string;
+    subItems?: NavLink[];
+}
+
+export interface SocialLink {
+    url: string;
+    newTab?: boolean;
+}
+
+export interface Image {
+    imageDesktop: {
+        url: string;
+        alt: string;
+        webpUrl: string;
+    };
+    imageMobile: {
+        url: string;
+        alt: string;
+        webpUrl: string;
     };
 }
 
@@ -126,3 +123,8 @@ export type RichText = {
         version: number;
     };
 };
+
+export interface SocialItem {
+    link: SocialLink;
+    icon: string;
+}

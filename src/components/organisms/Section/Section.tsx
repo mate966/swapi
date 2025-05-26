@@ -1,7 +1,7 @@
+import { ModuleType } from '@/types/module.types';
 import { getModule } from '@/utils/getModule';
-import { SectionProps } from './section.types';
 
-export const Section = ({ block, index }: SectionProps) => {
+export const Section = ({ block, index }: { block: ModuleType; index: number }) => {
     const module = getModule(block);
 
     if (!module) return null;
@@ -9,7 +9,7 @@ export const Section = ({ block, index }: SectionProps) => {
     const Component = module.component;
 
     return (
-        <section className="py-8">
+        <section className="py-8" id={`section-${index}`}>
             <Component key={index} block={module.props} />
         </section>
     );

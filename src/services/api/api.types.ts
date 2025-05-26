@@ -41,9 +41,15 @@ export interface HeroBlock {
     blockType: string;
     heroTitle: string;
     description?: string;
-    image?: {
+    imageDesktop: {
         url: string;
         alt: string;
+        webpUrl: string;
+    };
+    imageMobile: {
+        url: string;
+        alt: string;
+        webpUrl: string;
     };
 }
 
@@ -82,10 +88,12 @@ export interface ImageBlock {
     imageDesktop: {
         url: string;
         alt: string;
+        webpUrl: string;
     };
     imageMobile: {
         url: string;
         alt: string;
+        webpUrl: string;
     };
     caption: string;
 }

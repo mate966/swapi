@@ -7,9 +7,15 @@ query GetPage($slug: String) {
                     blockType
                     heroTitle: title
                     description
-                    image {
+                    imageDesktop {
                         url
                         alt
+                        webpUrl
+                    }
+                    imageMobile {
+                        url
+                        alt
+                        webpUrl
                     }
                 }
                 ... on TextBlock {
@@ -46,10 +52,12 @@ query GetPage($slug: String) {
                     imageDesktop {
                         url
                         alt
+                        webpUrl
                     }
                     imageMobile {
                         url
                         alt
+                        webpUrl
                     }
                     caption
                 }

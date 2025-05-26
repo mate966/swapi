@@ -1,8 +1,10 @@
 import TextXss from '@/components/atoms/TextXss/TextXss';
-import { TextBlock } from '@/services/api/api.types';
 import { convertLexicalToHTML } from '@payloadcms/richtext-lexical/html';
+import { TextTypes } from './text.types';
 
-export const Text = ({ block: { textTitle, text } }: { block: TextBlock }) => {
+export const Text = ({ block }: TextTypes) => {
+    const { textTitle, text } = block;
+
     const html = convertLexicalToHTML({ data: text });
 
     return (

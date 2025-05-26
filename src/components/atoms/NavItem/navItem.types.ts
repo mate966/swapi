@@ -11,7 +11,7 @@ export interface NavLink {
     label: string | null;
 }
 
-export interface NavItemProps {
+export interface NavItemTypes {
     navigation: {
         link: NavLink;
         subnav: NavLink[];

@@ -1,4 +1,4 @@
-export interface ResponsiveImageProps {
+export interface ResponsiveImageTypes {
     srcDesktop: string;
     srcMobile: string;
     alt: string;

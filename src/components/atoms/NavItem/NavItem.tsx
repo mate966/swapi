@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { NavItemProps } from './navItem.types';
+import { NavItemTypes } from './navItem.types';
 
-export const NavItem = ({ navigation }: NavItemProps) => {
+export const NavItem = ({ navigation }: NavItemTypes) => {
     const { link, subnav } = navigation;
 
     if (!link?.reference?.value?.slug || !link.label) {

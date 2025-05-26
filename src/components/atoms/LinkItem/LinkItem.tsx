@@ -1,7 +1,9 @@
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import { LinkItemTypes } from './linkItem.types';
 
-export const LinkItem = ({ label, type, url, newTab, reference }: LinkItemTypes) => {
+export const LinkItem = ({ ...link }: LinkItemTypes) => {
+    const { label, type, url, newTab, reference } = link;
+
     if (!label) return null;
 
     const commonProps = {
@@ -17,7 +19,7 @@ export const LinkItem = ({ label, type, url, newTab, reference }: LinkItemTypes)
     }
 
     if (type === 'reference' && reference?.value?.slug) {
-        return <Link to={`${reference.value.slug}`} {...commonProps} />;
+        return <RouterLink to={`${reference.value.slug}`} {...commonProps} />;
     }
 
     return null;

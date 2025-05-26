@@ -1,3 +1,4 @@
+import { LinkItem } from '@/components/atoms/LinkItem/LinkItem';
 import { CtaBlock } from '@/services/api/api.types';
 
 export const Cta = ({ block: { ctaTitle, copy, link } }: { block: CtaBlock }) => {
@@ -10,9 +11,7 @@ export const Cta = ({ block: { ctaTitle, copy, link } }: { block: CtaBlock }) =>
                 <p className="text-xl">{copy}</p>
             </div>
             <div className="container mx-auto px-4">
-                <a href={`/${link.reference.value.slug}`} className="text-xl">
-                    {link.label}
-                </a>
+                <LinkItem {...link} />
             </div>
         </div>
     );

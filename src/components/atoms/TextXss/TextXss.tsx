@@ -1,7 +1,7 @@
 import xss from 'xss';
-import type { Props } from './textxss.types';
+import type { TextXssTypes } from './textxss.types';
 
-const TextXss = ({ text }: Props) => {
+const TextXss = ({ text }: TextXssTypes) => {
     return (
         <>
             <div dangerouslySetInnerHTML={{ __html: xss(text) }} />

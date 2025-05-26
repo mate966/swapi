@@ -1,9 +1,9 @@
-import { NavItemProps } from '@/components/atoms/NavItem/navItem.types';
-
 // Globals
 
+import { NavItemTypes } from '@/components/atoms/NavItem/navItem.types';
+
 export interface Header {
-    nav: NavItemProps[];
+    nav: NavItemTypes[];
     id: string;
     title: string;
 }
@@ -11,7 +11,7 @@ export interface Footer {
     title: string;
     copy: string;
     copyright: string;
-    nav: NavItemProps[];
+    nav: NavItemTypes[];
     social: SocialItem[];
     id: string;
 }

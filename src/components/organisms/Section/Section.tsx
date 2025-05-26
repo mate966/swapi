@@ -1,7 +1,7 @@
-import { ModuleType } from '@/types/module.types';
 import { getModule } from '@/utils/getModule';
+import { SectionTypes } from './section.types';
 
-export const Section = ({ block, index }: { block: ModuleType; index: number }) => {
+export const Section = ({ block, index }: SectionTypes) => {
     const module = getModule(block);
 
     if (!module) return null;

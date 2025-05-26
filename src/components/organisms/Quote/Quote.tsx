@@ -1,6 +1,8 @@
-import { QuoteBlock } from '@/services/api/api.types';
+import { QuoteTypes } from './quote.types';
 
-export const Quote = ({ block: { quote, author } }: { block: QuoteBlock }) => {
+export const Quote = ({ block }: QuoteTypes) => {
+    const { quote, author } = block;
+
     return (
         <div>
             {quote}

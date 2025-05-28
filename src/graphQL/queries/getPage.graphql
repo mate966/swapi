@@ -99,6 +99,37 @@ query GetPage($slug: String) {
                         label
                     }
                 }
+                ... on FeaturedBlock {
+                    blockType
+                    title
+                    linkedItem {
+                        category
+                        item_characters {
+                            id
+                            name
+                        }
+                        item_planets {
+                            id
+                            name
+                        }
+                        item_starships {
+                            id
+                            name
+                        }
+                        item_vehicles {
+                            id
+                            name
+                        }
+                        item_species {
+                            id
+                            name
+                        }
+                        item_films {
+                            id
+                            title
+                        }
+                    }
+                }
             }
             slug
         }

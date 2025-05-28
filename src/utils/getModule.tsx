@@ -1,14 +1,16 @@
+import { About } from '@/components/organisms/About.tsx/About';
 import { Cta } from '@/components/organisms/Cta/Cta';
+import { Featured } from '@/components/organisms/Featured/Featured';
 import { Hero } from '@/components/organisms/Hero/Hero';
 import { Image } from '@/components/organisms/Image/Image';
 import { Quote } from '@/components/organisms/Quote/Quote';
 import { Text } from '@/components/organisms/Text/Text';
 
-import { About } from '@/components/organisms/About.tsx/About';
 import { ModuleComponent, ModuleType } from '@/types/module.types';
 import {
     AboutBlock,
     CtaBlock,
+    FeaturedBlock,
     HeroBlock,
     ImageBlock,
     QuoteBlock,
@@ -52,6 +54,12 @@ export const getModule = (block: ModuleType): ModuleComponent<ModuleType> | null
                 type: 'about_block',
                 component: About,
                 props: block as AboutBlock,
+            } as ModuleComponent<ModuleType>;
+        case 'featured_block':
+            return {
+                type: 'featured_block',
+                component: Featured,
+                props: block as FeaturedBlock,
             } as ModuleComponent<ModuleType>;
         default:
             return null;

@@ -1,5 +1,6 @@
 import {
     AboutBlock,
+    CompendiumCategoryBlock,
     CtaBlock,
     FeaturedBlock,
     HeroBlock,
@@ -15,7 +16,8 @@ export type ModuleType =
     | QuoteBlock
     | ImageBlock
     | AboutBlock
-    | FeaturedBlock;
+    | FeaturedBlock
+    | CompendiumCategoryBlock;
 
 export type ModuleComponent<T extends ModuleType> = {
     type: string;

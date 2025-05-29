@@ -1,4 +1,5 @@
 import { About } from '@/components/organisms/About.tsx/About';
+import { CompendiumCategory } from '@/components/organisms/CompendiumCategory/CompendiumCategory';
 import { Cta } from '@/components/organisms/Cta/Cta';
 import { Featured } from '@/components/organisms/Featured/Featured';
 import { Hero } from '@/components/organisms/Hero/Hero';
@@ -9,6 +10,7 @@ import { Text } from '@/components/organisms/Text/Text';
 import { ModuleComponent, ModuleType } from '@/types/module.types';
 import {
     AboutBlock,
+    CompendiumCategoryBlock,
     CtaBlock,
     FeaturedBlock,
     HeroBlock,
@@ -60,6 +62,12 @@ export const getModule = (block: ModuleType): ModuleComponent<ModuleType> | null
                 type: 'featured_block',
                 component: Featured,
                 props: block as FeaturedBlock,
+            } as ModuleComponent<ModuleType>;
+        case 'compendium_category_block':
+            return {
+                type: 'compendium_category_block',
+                component: CompendiumCategory,
+                props: block as CompendiumCategoryBlock,
             } as ModuleComponent<ModuleType>;
         default:
             return null;

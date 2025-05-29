@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { swapiService } from '../../services/api/api';
 import { Page as PageType } from '../../services/api/api.types';
 import { Section } from '../organisms/Section/Section';
 
 export const Page = () => {
-    const { slug } = useParams();
     const location = useLocation();
     const [page, setPage] = useState<PageType | null>(null);
     const [loading, setLoading] = useState(true);
@@ -15,22 +14,22 @@ export const Page = () => {
         const fetchPage = async () => {
             try {
                 setLoading(true);
-                const pageSlug = location.pathname === '/' ? 'home' : slug;
-                const data = await swapiService.getPage('/' + pageSlug);
+                const pageSlug = location.pathname === '/' ? '/home' : location.pathname;
+                const data = await swapiService.getPage(pageSlug);
                 setPage(data);
             } catch (err) {
-                setError('Nie udało się załadować strony');
-                console.error(err);
+                setError('Failed to load page');
+                console.error('Page fetch error:', err);
             } finally {
                 setLoading(false);
             }
         };
 
         fetchPage();
-    }, [slug, location.pathname]);
+    }, [location.pathname]);
 
     if (loading) {
-        return <div className="flex justify-center items-center min-h-screen">Ładowanie...</div>;
+        return <div className="flex justify-center items-center min-h-screen">Loading...</div>;
     }
 
     if (error) {
@@ -38,7 +37,7 @@ export const Page = () => {
     }
 
     if (!page) {
-        return <div className="text-center">Strona nie została znaleziona</div>;
+        return <div className="text-center">Page not found</div>;
     }
 
     return (

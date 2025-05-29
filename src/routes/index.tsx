@@ -16,6 +16,18 @@ export const router = createBrowserRouter([
                 path: ':slug',
                 element: <Page />,
             },
+            {
+                path: ':slug/:subslug',
+                element: <Page />,
+            },
+            {
+                path: ':slug/:subslug/:subsubslug',
+                element: <Page />,
+            },
+            {
+                path: '*',
+                element: <Page />,
+            },
         ],
         errorElement: <NotFound />,
     },

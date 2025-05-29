@@ -69,6 +69,12 @@ export interface FeaturedBlock {
         item_species?: Species[];
         item_films?: Film[];
     };
+    featuredLink: Link;
+}
+
+export interface CompendiumCategoryBlock {
+    blockType: string;
+    category: 'characters' | 'planets' | 'starships' | 'vehicles' | 'species' | 'films';
 }
 
 // SWAPI Types
@@ -196,7 +202,8 @@ export type PageContent =
     | QuoteBlock
     | ImageBlock
     | AboutBlock
-    | FeaturedBlock;
+    | FeaturedBlock
+    | CompendiumCategoryBlock;
 
 // Pages
 
@@ -209,6 +216,18 @@ export interface Page {
 export interface PagesResponse {
     Pages: {
         docs: Page[];
+    };
+}
+
+export interface CharactersResponse {
+    Characters: {
+        docs: Character[];
+    };
+}
+
+export interface PlanetsResponse {
+    Planets: {
+        docs: Planet[];
     };
 }
 

@@ -34,7 +34,7 @@ export default defineConfig({
         port: 5173,
         open: true,
         cors: true,
-        host: true,
+        host: '192.168.55.108',
         proxy: {
             '/api': {
                 target: 'http://localhost:3000',

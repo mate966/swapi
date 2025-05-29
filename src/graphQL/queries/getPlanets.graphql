@@ -1,0 +1,8 @@
+query GetPlanets($limit: Int, $page: Int) {
+    Planets(limit: $limit, page: $page) {
+        docs {
+            id
+            name
+        }
+    }
+}

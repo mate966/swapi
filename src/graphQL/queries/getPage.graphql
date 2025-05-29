@@ -2,6 +2,10 @@ query GetPage($slug: String) {
     Pages(where: { slug: { equals: $slug } }) {
         docs {
             title
+            seo {
+                metaTitle
+                metaDescription
+            }
             content {
                 ... on HeroBlock {
                     blockType
@@ -68,7 +72,7 @@ query GetPage($slug: String) {
                 }
                 ... on AboutBlock {
                     blockType
-                    title
+                    aboutTitle: title
                     text
                     image {
                         imageDesktop {
@@ -101,7 +105,7 @@ query GetPage($slug: String) {
                 }
                 ... on FeaturedBlock {
                     blockType
-                    title
+                    featuredTitle: title
                     linkedItem {
                         category
                         item_characters {
@@ -129,6 +133,26 @@ query GetPage($slug: String) {
                             title
                         }
                     }
+                    featuredLink: link {
+                        type
+                        reference {
+                            relationTo
+                            value {
+                                ... on Page {
+                                    id
+                                    title
+                                    slug
+                                }
+                            }
+                        }
+                        url
+                        newTab
+                        label
+                    }
+                }
+                ... on CompendiumCategoryBlock {
+                    blockType
+                    category
                 }
             }
             slug

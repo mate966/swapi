@@ -1,8 +1,9 @@
+import { LinkItem } from '@/components/atoms/LinkItem/LinkItem';
 import { Character, Film, Planet, Species, Starship, Vehicle } from '@/services/api/api.types';
 import { FeaturedTypes } from './featured.types';
 
 export const Featured = ({ block }: FeaturedTypes) => {
-    const { title, linkedItem } = block;
+    const { title, linkedItem, featuredLink } = block;
 
     const renderItems = (items: (Character | Planet | Starship | Vehicle | Species | Film)[]) => (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -120,6 +121,9 @@ export const Featured = ({ block }: FeaturedTypes) => {
                     </p>
                 </div>
                 {renderContent()}
+                <div className="container mx-auto px-4">
+                    <LinkItem {...featuredLink} />
+                </div>
             </div>
         </div>
     );

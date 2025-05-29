@@ -1,0 +1,8 @@
+query GetCharacters($limit: Int, $page: Int) {
+    Characters(limit: $limit, page: $page) {
+        docs {
+            id
+            name
+        }
+    }
+}

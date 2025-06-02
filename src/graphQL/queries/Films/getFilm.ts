@@ -4,7 +4,7 @@ import { gql } from '@apollo/client';
 export const GET_FILM = gql`
     ${FILMS_FULL}
 
-    query GetFilm($id: ID!) {
+    query GetFilm($id: String!) {
         Film(id: $id) {
             ...FilmsFull
         }

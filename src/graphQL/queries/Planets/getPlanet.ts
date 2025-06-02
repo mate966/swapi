@@ -4,7 +4,7 @@ import { gql } from '@apollo/client';
 export const GET_PLANET = gql`
     ${PLANET_FULL}
 
-    query GetPlanet($id: ID!) {
+    query GetPlanet($id: String!) {
         Planet(id: $id) {
             ...PlanetFull
         }

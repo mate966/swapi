@@ -6,6 +6,7 @@ import { Species } from '@/store/types/compendium/species.types';
 import { Starship } from '@/store/types/compendium/starship.types';
 import { Vehicle } from '@/store/types/compendium/vehicle.types';
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { CharacterDetails } from '../CharacterDetails/CharacterDetails';
 import { FilmDetails } from '../FilmDetails/FilmDetails';
 import { PlanetDetails } from '../PlanetDetails/PlanetDetails';
@@ -22,7 +23,6 @@ export const CompendiumCategory = ({ block }: CompendiumCategoryTypes) => {
         Character[] | Planet[] | Film[] | Starship[] | Vehicle[] | Species[]
     >([]);
     const [page, setPage] = useState(1);
-    // const [hasNextPage, setHasNextPage] = useState(true);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const isFirstLoad = useRef(true);
@@ -40,7 +40,7 @@ export const CompendiumCategory = ({ block }: CompendiumCategoryTypes) => {
                 const data = await swapiService.getCategory(category, LIMIT, 1);
                 setCategoryData(data);
             } catch (err) {
-                setError(`Failed to load ${category}`);
+                setError(`Nie udało się załadować ${category}`);
                 console.error(err);
             } finally {
                 setLoading(false);
@@ -50,7 +50,6 @@ export const CompendiumCategory = ({ block }: CompendiumCategoryTypes) => {
         fetchCategory();
     }, [category]);
 
-    //TODO: check if hasNextPage is true and if the characters array is not empty
     const loadMore = async () => {
         const nextPage = page + 1;
         try {
@@ -59,7 +58,7 @@ export const CompendiumCategory = ({ block }: CompendiumCategoryTypes) => {
             setCategoryData(prev => [...prev, ...data]);
             setPage(nextPage);
         } catch (err) {
-            setError(`Failed to load more ${category}`);
+            setError(`Nie udało się załadować więcej ${category}`);
             console.error(err);
         } finally {
             setLoading(false);
@@ -69,35 +68,54 @@ export const CompendiumCategory = ({ block }: CompendiumCategoryTypes) => {
     if (error) return <div>{error}</div>;
 
     const renderCategory = (item: Character | Film | Planet | Species | Starship | Vehicle) => {
-        switch (category) {
-            case 'characters':
-                return <CharacterDetails item={item as Character} />;
-            case 'films':
-                return <FilmDetails item={item as Film} />;
-            case 'planets':
-                return <PlanetDetails item={item as Planet} />;
-            case 'species':
-                return <SpeciesDetails item={item as Species} />;
-            case 'starships':
-                return <StarshipDetails item={item as Starship} />;
-            case 'vehicles':
-                return <VehicleDetails item={item as Vehicle} />;
-            default:
-                return <div>Unknown category</div>;
-        }
+        const detailsComponent = (() => {
+            switch (category) {
+                case 'characters':
+                    return <CharacterDetails item={item as Character} />;
+                case 'films':
+                    return <FilmDetails item={item as Film} />;
+                case 'planets':
+                    return <PlanetDetails item={item as Planet} />;
+                case 'species':
+                    return <SpeciesDetails item={item as Species} />;
+                case 'starships':
+                    return <StarshipDetails item={item as Starship} />;
+                case 'vehicles':
+                    return <VehicleDetails item={item as Vehicle} />;
+                default:
+                    return <div>Nieznana kategoria</div>;
+            }
+        })();
+
+        return (
+            <Link
+                to={`/${category}/${item.id}`}
+                className="block p-4 hover:bg-gray-100 transition-colors duration-200 rounded-lg"
+            >
+                {detailsComponent}
+            </Link>
+        );
     };
 
     return (
         <div>
-            <h2>Compendium: {category}</h2>
-            <ul>
+            <h2 className="text-2xl font-bold mb-6">Compendium: {category}</h2>
+            <ul className="space-y-4">
                 {categoryData.map((item, index) => (
-                    <li key={index}>{renderCategory(item)}</li>
+                    <li key={index} className="border rounded-lg overflow-hidden">
+                        {renderCategory(item)}
+                    </li>
                 ))}
             </ul>
-            <button onClick={loadMore}>Load More</button>
-            {/* {hasNextPage && !loading && <button onClick={loadMore}>Load More</button>} */}
-            {loading && <p>Loading...</p>}
+            <div className="mt-6 text-center">
+                <button
+                    onClick={loadMore}
+                    className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                    Załaduj więcej
+                </button>
+            </div>
+            {loading && <p className="text-center mt-4">Ładowanie...</p>}
         </div>
     );
 };

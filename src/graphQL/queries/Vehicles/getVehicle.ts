@@ -4,7 +4,7 @@ import { gql } from '@apollo/client';
 export const GET_VEHICLE = gql`
     ${VEHICLE_FULL}
 
-    query GetVehicle($id: ID!) {
+    query GetVehicle($id: String!) {
         Vehicle(id: $id) {
             ...VehicleFull
         }

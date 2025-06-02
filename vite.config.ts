@@ -28,6 +28,7 @@ export default defineConfig({
             '@styles': resolve(__dirname, './src/styles'),
             '@routes': resolve(__dirname, './src/routes'),
             '@layouts': resolve(__dirname, './src/layouts'),
+            '@graphQL': resolve(__dirname, './src/graphQL'),
         },
     },
     server: {

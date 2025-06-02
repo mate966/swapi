@@ -1,5 +1,10 @@
 import { LinkItem } from '@/components/atoms/LinkItem/LinkItem';
-import { Character, Film, Planet, Species, Starship, Vehicle } from '@/services/api/api.types';
+import { Character } from '@/store/types/compendium/character.types';
+import { Film } from '@/store/types/compendium/film.types';
+import { Planet } from '@/store/types/compendium/planet.types';
+import { Species } from '@/store/types/compendium/species.types';
+import { Starship } from '@/store/types/compendium/starship.types';
+import { Vehicle } from '@/store/types/compendium/vehicle.types';
 import { FeaturedTypes } from './featured.types';
 
 export const Featured = ({ block }: FeaturedTypes) => {

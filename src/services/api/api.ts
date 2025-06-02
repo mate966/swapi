@@ -1,10 +1,15 @@
-import { GetCharacters } from '@/graphQL/queries/getCharacters.graphql';
-import { GetPage } from '@/graphQL/queries/getPage.graphql';
-import { GetPlanets } from '@/graphQL/queries/getPlanets.graphql';
-import { ApolloClient, InMemoryCache, createHttpLink, from } from '@apollo/client';
+import { GET_CHARACTERS } from '@/graphQL/queries/Characters/getCharacters';
+import { GET_FILMS } from '@/graphQL/queries/Films/getFilms';
+import { GET_PLANETS } from '@/graphQL/queries/Planets/getPlanets';
+import { GET_SPECIES_FRAGMENT } from '@/graphQL/queries/Species/getSpeciesFragment';
+import { GET_STARSHIPS } from '@/graphQL/queries/Starships/getStarships';
+import { GET_VEHICLES } from '@/graphQL/queries/Vehicles/getVehicles';
+
+import { GET_PAGE } from '@/graphQL/queries/Page/getPage';
+import { ApolloClient, DocumentNode, InMemoryCache, createHttpLink, from } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { authService } from '../auth/auth';
-import { CharactersResponse, PagesResponse, PlanetsResponse } from './api.types';
+import { PagesResponse } from './api.types';
 
 const httpLink = createHttpLink({
     uri: import.meta.env.VITE_PAYLOAD_API_URL + '/graphql',
@@ -25,35 +30,31 @@ export const client = new ApolloClient({
     cache: new InMemoryCache(),
 });
 
+const queries: Record<string, DocumentNode> = {
+    characters: GET_CHARACTERS,
+    planets: GET_PLANETS,
+    films: GET_FILMS,
+    starships: GET_STARSHIPS,
+    vehicles: GET_VEHICLES,
+    page: GET_PAGE,
+    species: GET_SPECIES_FRAGMENT,
+};
+
 export const swapiService = {
     getPage: async (slug: string) => {
         const { data } = await client.query<PagesResponse>({
-            query: GetPage,
+            query: GET_PAGE,
             variables: { slug },
         });
         return data.Pages.docs[0];
     },
-    getCharacters: async () => {
-        const { data } = await client.query<CharactersResponse>({
-            query: GetCharacters,
-            variables: { limit: 100 },
-        });
-        return data.Characters.docs;
-    },
-    getPlanets: async () => {
-        const { data } = await client.query<PlanetsResponse>({
-            query: GetPlanets,
-        });
-        return data.Planets.docs;
-    },
     getCategory: async (category: string, limit = 10, page = 1) => {
-        const response = await client.query({
-            query: GetPlanets,
+        const { data } = await client.query({
+            query: queries[category],
             variables: { limit, page },
         });
-        return {
-            docs: response.data.Planets.docs,
-            //   hasNextPage: response.data.Characters.hasNextPage,
-        };
+        const categoryKey = Object.keys(data)[0];
+        const categoryData = data[categoryKey];
+        return categoryData.docs;
     },
 };

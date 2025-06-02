@@ -4,7 +4,7 @@ export const FILMS_FULL = gql`
     fragment FilmsFull on Film {
         id
         title
-        episode_id
+        episodeID
         opening_crawl
         director
         producer

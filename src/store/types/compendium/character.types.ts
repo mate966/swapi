@@ -1,3 +1,8 @@
+export interface RelatedItem {
+    id: string;
+    name: string;
+}
+
 export interface Character {
     id: string;
     name: string;
@@ -8,9 +13,9 @@ export interface Character {
     eye_color: string;
     birth_year: string;
     gender: string;
-    homeworld: string;
-    films: string[];
-    species: string[];
-    vehicles: string[];
-    starships: string[];
+    homeworld: RelatedItem;
+    films: RelatedItem[];
+    species: RelatedItem[];
+    vehicles: RelatedItem[];
+    starships: RelatedItem[];
 }

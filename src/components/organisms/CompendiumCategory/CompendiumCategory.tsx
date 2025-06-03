@@ -1,3 +1,4 @@
+import { CompendiumTile } from '@/components/molecules/CompendiumTile/CompendiumTile';
 import { swapiService } from '@/services/api/api';
 import { Character } from '@/store/types/compendium/character.types';
 import { Film } from '@/store/types/compendium/film.types';
@@ -6,13 +7,6 @@ import { Species } from '@/store/types/compendium/species.types';
 import { Starship } from '@/store/types/compendium/starship.types';
 import { Vehicle } from '@/store/types/compendium/vehicle.types';
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { CharacterDetails } from '../CharacterDetails/CharacterDetails';
-import { FilmDetails } from '../FilmDetails/FilmDetails';
-import { PlanetDetails } from '../PlanetDetails/PlanetDetails';
-import { SpeciesDetails } from '../SpeciesDetails/SpeciesDetails';
-import { StarshipDetails } from '../StarshipDetails/StarshipDetails';
-import { VehicleDetails } from '../VehicleDetails/VehicleDetails';
 import { CompendiumCategoryTypes } from './compendiumCategory.types';
 
 const LIMIT = 10;
@@ -67,46 +61,14 @@ export const CompendiumCategory = ({ block }: CompendiumCategoryTypes) => {
 
     if (error) return <div>{error}</div>;
 
-    const renderCategory = (item: Character | Film | Planet | Species | Starship | Vehicle) => {
-        const detailsComponent = (() => {
-            switch (category) {
-                case 'characters':
-                    return <CharacterDetails item={item as Character} />;
-                case 'films':
-                    return <FilmDetails item={item as Film} />;
-                case 'planets':
-                    return <PlanetDetails item={item as Planet} />;
-                case 'species':
-                    return <SpeciesDetails item={item as Species} />;
-                case 'starships':
-                    return <StarshipDetails item={item as Starship} />;
-                case 'vehicles':
-                    return <VehicleDetails item={item as Vehicle} />;
-                default:
-                    return <div>Nieznana kategoria</div>;
-            }
-        })();
-
-        return (
-            <Link
-                to={`/${category}/${item.id}`}
-                className="block p-4 hover:bg-gray-100 transition-colors duration-200 rounded-lg"
-            >
-                {detailsComponent}
-            </Link>
-        );
-    };
-
     return (
         <div>
             <h2 className="text-2xl font-bold mb-6">Compendium: {category}</h2>
-            <ul className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {categoryData.map((item, index) => (
-                    <li key={index} className="border rounded-lg overflow-hidden">
-                        {renderCategory(item)}
-                    </li>
+                    <CompendiumTile key={index} item={item} category={category} />
                 ))}
-            </ul>
+            </div>
             <div className="mt-6 text-center">
                 <button
                     onClick={loadMore}

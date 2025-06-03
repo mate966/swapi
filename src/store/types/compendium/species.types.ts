@@ -1,3 +1,5 @@
+import { RelatedItem } from './character.types';
+
 export interface Species {
     id: string;
     name: string;
@@ -8,8 +10,8 @@ export interface Species {
     hair_colors: string;
     eye_colors: string;
     average_lifespan: string;
-    homeworld: string;
+    homeworld: RelatedItem;
     language: string;
-    people: string[];
-    films: string[];
+    people: RelatedItem[];
+    films: RelatedItem[];
 }

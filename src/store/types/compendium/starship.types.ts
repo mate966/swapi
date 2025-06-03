@@ -1,3 +1,5 @@
+import { RelatedItem } from './character.types';
+
 export interface Starship {
     id: string;
     name: string;
@@ -13,6 +15,6 @@ export interface Starship {
     hyperdrive_rating: string;
     MGLT: string;
     starship_class: string;
-    pilots: string[];
-    films: string[];
+    pilots: RelatedItem[];
+    films: RelatedItem[];
 }

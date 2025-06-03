@@ -1,4 +1,5 @@
 import { LinkItem } from '@/components/atoms/LinkItem/LinkItem';
+import { CompendiumTile } from '@/components/molecules/CompendiumTile/CompendiumTile';
 import { Character } from '@/store/types/compendium/character.types';
 import { Film } from '@/store/types/compendium/film.types';
 import { Planet } from '@/store/types/compendium/planet.types';
@@ -13,11 +14,7 @@ export const Featured = ({ block }: FeaturedTypes) => {
     const renderItems = (items: (Character | Planet | Starship | Vehicle | Species | Film)[]) => (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {items.map(item => (
-                <div key={item.id} className="bg-white rounded-lg shadow-md p-6">
-                    <h3 className="text-xl font-bold text-gray-800">
-                        {'name' in item ? item.name : item.title}
-                    </h3>
-                </div>
+                <CompendiumTile key={item.id} item={item} category={linkedItem.category} />
             ))}
         </div>
     );

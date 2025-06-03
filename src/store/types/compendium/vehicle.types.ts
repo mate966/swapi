@@ -1,3 +1,5 @@
+import { RelatedItem } from './character.types';
+
 export interface Vehicle {
     id: string;
     name: string;
@@ -11,6 +13,6 @@ export interface Vehicle {
     cargo_capacity: string;
     consumables: string;
     vehicle_class: string;
-    pilots: string[];
-    films: string[];
+    pilots: RelatedItem[];
+    films: RelatedItem[];
 }

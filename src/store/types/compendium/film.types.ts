@@ -1,3 +1,5 @@
+import { RelatedItem } from './character.types';
+
 export interface Film {
     id: string;
     title: string;
@@ -6,9 +8,9 @@ export interface Film {
     director: string;
     producer: string;
     release_date: string;
-    characters: string[];
-    planets: string[];
-    starships: string[];
-    vehicles: string[];
-    species: string[];
+    characters: RelatedItem[];
+    planets: RelatedItem[];
+    starships: RelatedItem[];
+    vehicles: RelatedItem[];
+    species: RelatedItem[];
 }

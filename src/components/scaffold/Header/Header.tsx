@@ -1,6 +1,6 @@
 import { NavItem } from '@/components/atoms/NavItem/NavItem';
 import { NavItemProps } from '@/components/atoms/NavItem/navItem.types';
-import { useGlobalData } from '@/hooks/useGlobalData';
+import { useGlobalData } from '@/hooks/useGlobalData/useGlobalData';
 import { Link } from 'react-router-dom';
 
 export const Header = () => {

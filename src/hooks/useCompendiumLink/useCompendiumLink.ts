@@ -10,7 +10,7 @@ export const useCompendiumLink = () => {
 
     const getItemLink = (item: CompendiumItem | null | undefined) => {
         if (!item?.id || !item?.category) return null;
-        return `/${item.category}/${item.id}`;
+        return `/compendium/${item.category}/${item.id}`;
     };
 
     const navigateToItem = (item: CompendiumItem | null | undefined) => {

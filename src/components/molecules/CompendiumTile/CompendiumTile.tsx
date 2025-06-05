@@ -1,4 +1,4 @@
-import { useCompendiumLink } from '@/hooks/useCompendiumLink';
+import { useCompendiumLink } from '@/hooks/useCompendiumLink/useCompendiumLink';
 import { Character } from '@/store/types/compendium/character.types';
 import { CompendiumCategory } from '@/store/types/compendium/compendium.types';
 import { Film } from '@/store/types/compendium/film.types';

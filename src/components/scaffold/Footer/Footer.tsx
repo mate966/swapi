@@ -1,7 +1,7 @@
 import { NavItem } from '@/components/atoms/NavItem/NavItem';
 import { NavItemProps } from '@/components/atoms/NavItem/navItem.types';
 import Icon from '@/components/ui/Icon';
-import { useGlobalData } from '@/hooks/useGlobalData';
+import { useGlobalData } from '@/hooks/useGlobalData/useGlobalData';
 
 export const Footer = () => {
     const { footer, loading, error } = useGlobalData();

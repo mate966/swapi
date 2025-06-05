@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from '@/hooks/useRedux';
+import { useAppDispatch, useAppSelector } from '@/hooks/useRedux/useRedux';
 import { fetchGlobalData } from '@/store/slices/globalDataSlice/globalDataSlice';
 import { useEffect } from 'react';
 

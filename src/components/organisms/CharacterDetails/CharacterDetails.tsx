@@ -1,5 +1,5 @@
 import { CompendiumTile } from '@/components/molecules/CompendiumTile/CompendiumTile';
-import { useCompendiumLink } from '@/hooks/useCompendiumLink';
+import { useCompendiumLink } from '@/hooks/useCompendiumLink/useCompendiumLink';
 import { Character, RelatedItem } from '@/store/types/compendium/character.types';
 
 type CharacterDetailsProps = {

@@ -1,6 +1,6 @@
 import { RelatedItem } from './character.types';
 
-export interface Species {
+export interface Specie {
     id: string;
     name: string;
     classification: string;

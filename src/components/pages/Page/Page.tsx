@@ -1,8 +1,8 @@
+import { Section } from '@/components/organisms/Section/Section';
+import { swapiService } from '@/services/api/api';
+import { Page as PageType } from '@/services/api/api.types';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { swapiService } from '../../services/api/api';
-import { Page as PageType } from '../../services/api/api.types';
-import { Section } from '../organisms/Section/Section';
 
 export const Page = () => {
     const location = useLocation();

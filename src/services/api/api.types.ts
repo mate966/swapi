@@ -2,7 +2,7 @@ import { NavItemTypes } from '@/components/atoms/NavItem/navItem.types';
 import { Character } from '@/store/types/compendium/character.types';
 import { Film } from '@/store/types/compendium/film.types';
 import { Planet } from '@/store/types/compendium/planet.types';
-import { Species } from '@/store/types/compendium/species.types';
+import { Specie } from '@/store/types/compendium/species.types';
 import { Starship } from '@/store/types/compendium/starship.types';
 import { Vehicle } from '@/store/types/compendium/vehicle.types';
 
@@ -70,7 +70,7 @@ export interface FeaturedBlock {
         item_planets?: Planet[];
         item_starships?: Starship[];
         item_vehicles?: Vehicle[];
-        item_species?: Species[];
+        item_species?: Specie[];
         item_films?: Film[];
     };
     featuredLink: Link;

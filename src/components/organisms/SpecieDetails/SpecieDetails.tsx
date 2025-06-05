@@ -1,13 +1,13 @@
 import { CompendiumTile } from '@/components/molecules/CompendiumTile/CompendiumTile';
 import { useCompendiumLink } from '@/hooks/useCompendiumLink/useCompendiumLink';
 import { RelatedItem } from '@/store/types/compendium/character.types';
-import { Species } from '@/store/types/compendium/species.types';
+import { Specie } from '@/store/types/compendium/species.types';
 
-type SpeciesDetailsProps = {
-    item: Species;
+type SpecieDetailsProps = {
+    item: Specie;
 };
 
-export const SpeciesDetails = ({ item }: SpeciesDetailsProps) => {
+export const SpecieDetails = ({ item }: SpecieDetailsProps) => {
     const { navigateToItem } = useCompendiumLink();
 
     const renderLink = (

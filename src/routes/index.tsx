@@ -1,6 +1,6 @@
 import App from '@/App';
-import { Page } from '@/components/Page/Page';
-import { CompendiumDetailsPage } from '@/components/pages/CompendiumDetailsPage/CompendiumDetailsPage';
+import { CompendiumDetailsPage } from '@/components/Pages/CompendiumDetailsPage/CompendiumDetailsPage';
+import { Page } from '@/components/Pages/Page/Page';
 import { NotFound } from '@/components/scaffold/NotFound/NotFound';
 import { createBrowserRouter } from 'react-router-dom';
 

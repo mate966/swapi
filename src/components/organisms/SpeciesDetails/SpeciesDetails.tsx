@@ -1,5 +1,5 @@
 import { CompendiumTile } from '@/components/molecules/CompendiumTile/CompendiumTile';
-import { useCompendiumLink } from '@/hooks/useCompendiumLink';
+import { useCompendiumLink } from '@/hooks/useCompendiumLink/useCompendiumLink';
 import { RelatedItem } from '@/store/types/compendium/character.types';
 import { Species } from '@/store/types/compendium/species.types';
 
@@ -32,50 +32,48 @@ export const SpeciesDetails = ({ item }: SpeciesDetailsProps) => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-4">
                     <div>
-                        <h3 className="text-lg font-semibold text-gray-700">
-                            Podstawowe informacje
-                        </h3>
+                        <h3 className="text-lg font-semibold text-gray-700">Basic information</h3>
                         <dl className="mt-2 space-y-2">
                             <div className="flex justify-between">
-                                <dt className="text-gray-600">Klasyfikacja:</dt>
+                                <dt className="text-gray-600">Classification:</dt>
                                 <dd>{item.classification || 'N/A'}</dd>
                             </div>
                             <div className="flex justify-between">
-                                <dt className="text-gray-600">Oznaczenie:</dt>
+                                <dt className="text-gray-600">Designation:</dt>
                                 <dd>{item.designation || 'N/A'}</dd>
                             </div>
                             <div className="flex justify-between">
-                                <dt className="text-gray-600">Średni wzrost:</dt>
+                                <dt className="text-gray-600">Average height:</dt>
                                 <dd>{item.average_height ? `${item.average_height} cm` : 'N/A'}</dd>
                             </div>
                             <div className="flex justify-between">
-                                <dt className="text-gray-600">Kolory skóry:</dt>
+                                <dt className="text-gray-600">Skin colors:</dt>
                                 <dd>{item.skin_colors || 'N/A'}</dd>
                             </div>
                             <div className="flex justify-between">
-                                <dt className="text-gray-600">Kolory włosów:</dt>
+                                <dt className="text-gray-600">Hair colors:</dt>
                                 <dd>{item.hair_colors || 'N/A'}</dd>
                             </div>
                             <div className="flex justify-between">
-                                <dt className="text-gray-600">Kolory oczu:</dt>
+                                <dt className="text-gray-600">Eye colors:</dt>
                                 <dd>{item.eye_colors || 'N/A'}</dd>
                             </div>
                             <div className="flex justify-between">
-                                <dt className="text-gray-600">Średnia długość życia:</dt>
+                                <dt className="text-gray-600">Average lifespan:</dt>
                                 <dd>{item.average_lifespan || 'N/A'}</dd>
                             </div>
                             <div className="flex justify-between">
-                                <dt className="text-gray-600">Język:</dt>
+                                <dt className="text-gray-600">Language:</dt>
                                 <dd>{item.language || 'N/A'}</dd>
                             </div>
                         </dl>
                     </div>
 
                     <div>
-                        <h3 className="text-lg font-semibold text-gray-700">Powiązania</h3>
+                        <h3 className="text-lg font-semibold text-gray-700">Relations</h3>
                         <dl className="mt-2 space-y-2">
                             <div className="flex justify-between">
-                                <dt className="text-gray-600">Planeta pochodzenia:</dt>
+                                <dt className="text-gray-600">Homeworld:</dt>
                                 <dd>
                                     {item.homeworld ? renderLink(item.homeworld, 'planets') : 'N/A'}
                                 </dd>
@@ -87,7 +85,7 @@ export const SpeciesDetails = ({ item }: SpeciesDetailsProps) => {
                 <div className="space-y-6">
                     {item.people && item.people.length > 0 && (
                         <div>
-                            <h3 className="text-lg font-semibold text-gray-700 mb-3">Osoby</h3>
+                            <h3 className="text-lg font-semibold text-gray-700 mb-3">People</h3>
                             <div className="grid grid-cols-1 gap-3">
                                 {item.people.map(person => (
                                     <CompendiumTile
@@ -117,7 +115,7 @@ export const SpeciesDetails = ({ item }: SpeciesDetailsProps) => {
 
                     {item.films && item.films.length > 0 && (
                         <div>
-                            <h3 className="text-lg font-semibold text-gray-700 mb-3">Filmy</h3>
+                            <h3 className="text-lg font-semibold text-gray-700 mb-3">Films</h3>
                             <div className="grid grid-cols-1 gap-3">
                                 {item.films.map(film => (
                                     <CompendiumTile

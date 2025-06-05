@@ -3,7 +3,7 @@ import { CompendiumTile } from '@/components/molecules/CompendiumTile/Compendium
 import { Character } from '@/store/types/compendium/character.types';
 import { Film } from '@/store/types/compendium/film.types';
 import { Planet } from '@/store/types/compendium/planet.types';
-import { Species } from '@/store/types/compendium/species.types';
+import { Specie } from '@/store/types/compendium/species.types';
 import { Starship } from '@/store/types/compendium/starship.types';
 import { Vehicle } from '@/store/types/compendium/vehicle.types';
 import { FeaturedTypes } from './featured.types';
@@ -11,7 +11,7 @@ import { FeaturedTypes } from './featured.types';
 export const Featured = ({ block }: FeaturedTypes) => {
     const { title, linkedItem, featuredLink } = block;
 
-    const renderItems = (items: (Character | Planet | Starship | Vehicle | Species | Film)[]) => (
+    const renderItems = (items: (Character | Planet | Starship | Vehicle | Specie | Film)[]) => (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {items.map(item => (
                 <CompendiumTile key={item.id} item={item} category={linkedItem.category} />

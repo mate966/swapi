@@ -3,11 +3,11 @@ import { Character } from '@/store/types/compendium/character.types';
 import { CompendiumCategory } from '@/store/types/compendium/compendium.types';
 import { Film } from '@/store/types/compendium/film.types';
 import { Planet } from '@/store/types/compendium/planet.types';
-import { Species } from '@/store/types/compendium/species.types';
+import { Specie } from '@/store/types/compendium/species.types';
 import { Starship } from '@/store/types/compendium/starship.types';
 import { Vehicle } from '@/store/types/compendium/vehicle.types';
 
-type CompendiumItem = Character | Film | Planet | Species | Starship | Vehicle;
+type CompendiumItem = Character | Film | Planet | Specie | Starship | Vehicle;
 
 type CompendiumTileProps = {
     item: CompendiumItem;

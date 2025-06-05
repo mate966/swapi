@@ -2,7 +2,7 @@ import { QueryState } from '@/components/molecules/QueryState/QueryState';
 import { CharacterDetails } from '@/components/organisms/CharacterDetails/CharacterDetails';
 import { FilmDetails } from '@/components/organisms/FilmDetails/FilmDetails';
 import { PlanetDetails } from '@/components/organisms/PlanetDetails/PlanetDetails';
-import { SpeciesDetails } from '@/components/organisms/SpeciesDetails/SpeciesDetails';
+import { SpecieDetails } from '@/components/organisms/SpecieDetails/SpecieDetails';
 import { StarshipDetails } from '@/components/organisms/StarshipDetails/StarshipDetails';
 import { VehicleDetails } from '@/components/organisms/VehicleDetails/VehicleDetails';
 import { GET_CHARACTER } from '@/graphQL/queries/Characters/getCharacter';
@@ -14,7 +14,7 @@ import { GET_VEHICLE } from '@/graphQL/queries/Vehicles/getVehicle';
 import { useQuery } from '@apollo/client';
 import { Navigate, useParams } from 'react-router-dom';
 
-type CompendiumType = 'characters' | 'films';
+type CompendiumType = 'characters' | 'films' | 'planets' | 'species' | 'starships' | 'vehicles';
 
 const QUERIES = {
     characters: GET_CHARACTER,
@@ -29,9 +29,18 @@ const DETAILS_COMPONENTS = {
     characters: CharacterDetails,
     films: FilmDetails,
     planets: PlanetDetails,
-    species: SpeciesDetails,
+    species: SpecieDetails,
     starships: StarshipDetails,
     vehicles: VehicleDetails,
+} as const;
+
+const DATA_KEYS = {
+    characters: 'Character',
+    films: 'Film',
+    planets: 'Planet',
+    species: 'Species',
+    starships: 'Starship',
+    vehicles: 'Vehicle',
 } as const;
 
 export const CompendiumDetailsPage = () => {
@@ -48,11 +57,7 @@ export const CompendiumDetailsPage = () => {
     }
 
     const DetailsComponent = DETAILS_COMPONENTS[compendiumType];
-    const item =
-        data?.[
-            compendiumType.slice(0, -1).charAt(0).toUpperCase() +
-                compendiumType.slice(0, -1).slice(1)
-        ];
+    const item = data?.[DATA_KEYS[compendiumType]];
 
     return (
         <QueryState loading={loading} error={error} empty={!item}>

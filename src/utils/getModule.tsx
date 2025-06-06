@@ -8,10 +8,12 @@ import { Image } from '@/components/organisms/Image/Image';
 import { Quote } from '@/components/organisms/Quote/Quote';
 import { Text } from '@/components/organisms/Text/Text';
 
+import { ContactForm } from '@/components/organisms/ContactForm/ContactForm';
 import { ModuleComponent, ModuleType } from '@/types/module.types';
 import {
     AboutBlock,
     CompendiumCategoryBlock,
+    ContactFormBlock,
     CtaBlock,
     FeaturedBlock,
     GalleryBlock,
@@ -76,6 +78,12 @@ export const getModule = (block: ModuleType): ModuleComponent<ModuleType> | null
                 type: 'gallery_block',
                 component: Gallery,
                 props: block as GalleryBlock,
+            } as ModuleComponent<ModuleType>;
+        case 'contact_form_block':
+            return {
+                type: 'contact_form_block',
+                component: ContactForm,
+                props: block as ContactFormBlock,
             } as ModuleComponent<ModuleType>;
         default:
             return null;

@@ -1,6 +1,7 @@
 import {
     AboutBlock,
     CompendiumCategoryBlock,
+    ContactFormBlock,
     CtaBlock,
     FeaturedBlock,
     GalleryBlock,
@@ -19,7 +20,8 @@ export type ModuleType =
     | AboutBlock
     | FeaturedBlock
     | GalleryBlock
-    | CompendiumCategoryBlock;
+    | CompendiumCategoryBlock
+    | ContactFormBlock;
 
 export type ModuleComponent<T extends ModuleType> = {
     type: string;

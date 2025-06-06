@@ -2,6 +2,7 @@ import { About } from '@/components/organisms/About.tsx/About';
 import { CompendiumCategory } from '@/components/organisms/CompendiumCategory/CompendiumCategory';
 import { Cta } from '@/components/organisms/Cta/Cta';
 import { Featured } from '@/components/organisms/Featured/Featured';
+import { Gallery } from '@/components/organisms/Gallery/Gallery';
 import { Hero } from '@/components/organisms/Hero/Hero';
 import { Image } from '@/components/organisms/Image/Image';
 import { Quote } from '@/components/organisms/Quote/Quote';
@@ -13,6 +14,7 @@ import {
     CompendiumCategoryBlock,
     CtaBlock,
     FeaturedBlock,
+    GalleryBlock,
     HeroBlock,
     ImageBlock,
     QuoteBlock,
@@ -68,6 +70,12 @@ export const getModule = (block: ModuleType): ModuleComponent<ModuleType> | null
                 type: 'compendium_category_block',
                 component: CompendiumCategory,
                 props: block as CompendiumCategoryBlock,
+            } as ModuleComponent<ModuleType>;
+        case 'gallery_block':
+            return {
+                type: 'gallery_block',
+                component: Gallery,
+                props: block as GalleryBlock,
             } as ModuleComponent<ModuleType>;
         default:
             return null;

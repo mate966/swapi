@@ -1,54 +1,40 @@
-# React + TypeScript + Vite
+# SWAPI Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**SWAPI Platform** is a full-stack web application combining a modern frontend built with React and Vite, and a backend powered by Payload CMS and Next.js. The project aims to deliver an interactive Star Wars data explorer using the public SWAPI API, with features like filtering, ratings, favorites, comments, and authentication.
 
-Currently, two official plugins are available:
+## 🔧 Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Frontend:** React 19, Vite, Tailwind CSS, Redux Toolkit, React Router, GSAP
+- **Backend:** Payload CMS 3.39, MongoDB, Next.js 15
+- **Other tools:** GraphQL, Axios, Zod, react-hook-form, Husky, ESLint, Prettier, Stylelint, TypeScript, GitHub, Vercel
 
-## Expanding the ESLint configuration
+## ✨ What’s Working?
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Integration with SWAPI (characters, planets, films)
+- Fully configured development environment (TypeScript, ESLint, Prettier, Tailwind)
+- Basic UI with filters and sorting
+- Payload CMS connected to MongoDB
+- Project structure with aliases and modular organization
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 🚧 Work in Progress
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- Ratings, comments, and favorites synced with backend
+- Advanced search and filtering across all entity types
+- Protected routes and JWT-based auth middleware
+- Responsive layout, dark/light mode toggle
+- Custom UI components (sliders, modals, loaders)
+- Backend collections and MongoDB backup strategies
+- Deployment setup (CI/CD, analytics, monitoring)
+- Authentication system with login and registration
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🧪 Upcoming
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- Backend validation and error handling (e.g. duplicate users)
+- Unit and integration tests
+- Full gallery and "load more" pattern with client-side caching
+- GitHub Actions and branch protection
+- Final polish and QA phase
+
+---
+
+May the force be with You!

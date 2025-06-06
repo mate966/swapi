@@ -2,6 +2,7 @@ import { ABOUT_BLOCK_FRAGMENT } from '@/graphQL/fragments/Blocks/About/AboutBloc
 import { COMPENDIUM_CATEGORY_BLOCK_FRAGMENT } from '@/graphQL/fragments/Blocks/CompendiumCategory/CompendiumCategoryBlock';
 import { CTA_BLOCK_FRAGMENT } from '@/graphQL/fragments/Blocks/Cta/CtaBlock';
 import { FEATURED_BLOCK_FRAGMENT } from '@/graphQL/fragments/Blocks/Featured/FeaturedBlock';
+import { GALLERY_BLOCK_FRAGMENT } from '@/graphQL/fragments/Blocks/Gallery/GalleryBlock';
 import { HERO_BLOCK_FRAGMENT } from '@/graphQL/fragments/Blocks/Hero/HeroBlock';
 import { IMAGE_BLOCK_FRAGMENT } from '@/graphQL/fragments/Blocks/Image/ImageBlock';
 import { QUOTE_BLOCK_FRAGMENT } from '@/graphQL/fragments/Blocks/Quote/QuoteBlock';
@@ -17,6 +18,7 @@ export const GET_PAGE = gql`
     ${ABOUT_BLOCK_FRAGMENT}
     ${FEATURED_BLOCK_FRAGMENT}
     ${COMPENDIUM_CATEGORY_BLOCK_FRAGMENT}
+    ${GALLERY_BLOCK_FRAGMENT}
 
     query GetPage($slug: String) {
         Pages(where: { slug: { equals: $slug } }) {
@@ -35,6 +37,7 @@ export const GET_PAGE = gql`
                     ...AboutBlock
                     ...FeaturedBlock
                     ...CompendiumCategoryBlock
+                    ...GalleryBlock
                 }
                 slug
             }

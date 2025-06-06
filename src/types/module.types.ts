@@ -3,6 +3,7 @@ import {
     CompendiumCategoryBlock,
     CtaBlock,
     FeaturedBlock,
+    GalleryBlock,
     HeroBlock,
     ImageBlock,
     QuoteBlock,
@@ -17,6 +18,7 @@ export type ModuleType =
     | ImageBlock
     | AboutBlock
     | FeaturedBlock
+    | GalleryBlock
     | CompendiumCategoryBlock;
 
 export type ModuleComponent<T extends ModuleType> = {

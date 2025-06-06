@@ -61,6 +61,11 @@ export interface AboutBlock {
     aboutLink: Link;
 }
 
+export interface GalleryBlock {
+    blockType: string;
+    images: Image[];
+}
+
 export interface FeaturedBlock {
     blockType: string;
     title: string;
@@ -91,6 +96,7 @@ export type PageContent =
     | ImageBlock
     | AboutBlock
     | FeaturedBlock
+    | GalleryBlock
     | CompendiumCategoryBlock;
 
 // Pages

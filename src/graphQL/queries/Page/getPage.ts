@@ -1,5 +1,6 @@
 import { ABOUT_BLOCK_FRAGMENT } from '@/graphQL/fragments/Blocks/About/AboutBlock';
 import { COMPENDIUM_CATEGORY_BLOCK_FRAGMENT } from '@/graphQL/fragments/Blocks/CompendiumCategory/CompendiumCategoryBlock';
+import { CONTACT_FORM_BLOCK_FRAGMENT } from '@/graphQL/fragments/Blocks/ContactForm/ContactForm';
 import { CTA_BLOCK_FRAGMENT } from '@/graphQL/fragments/Blocks/Cta/CtaBlock';
 import { FEATURED_BLOCK_FRAGMENT } from '@/graphQL/fragments/Blocks/Featured/FeaturedBlock';
 import { GALLERY_BLOCK_FRAGMENT } from '@/graphQL/fragments/Blocks/Gallery/GalleryBlock';
@@ -19,6 +20,7 @@ export const GET_PAGE = gql`
     ${FEATURED_BLOCK_FRAGMENT}
     ${COMPENDIUM_CATEGORY_BLOCK_FRAGMENT}
     ${GALLERY_BLOCK_FRAGMENT}
+    ${CONTACT_FORM_BLOCK_FRAGMENT}
 
     query GetPage($slug: String) {
         Pages(where: { slug: { equals: $slug } }) {
@@ -38,6 +40,7 @@ export const GET_PAGE = gql`
                     ...FeaturedBlock
                     ...CompendiumCategoryBlock
                     ...GalleryBlock
+                    ...ContactFormBlock
                 }
                 slug
             }

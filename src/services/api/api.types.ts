@@ -86,6 +86,12 @@ export interface CompendiumCategoryBlock {
     category: 'characters' | 'planets' | 'starships' | 'vehicles' | 'species' | 'films';
 }
 
+export interface ContactFormBlock {
+    blockType: string;
+    title: string;
+    description: string;
+}
+
 // SWAPI Types
 
 export type PageContent =
@@ -97,7 +103,8 @@ export type PageContent =
     | AboutBlock
     | FeaturedBlock
     | GalleryBlock
-    | CompendiumCategoryBlock;
+    | CompendiumCategoryBlock
+    | ContactFormBlock;
 
 // Pages
 

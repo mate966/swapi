@@ -1,5 +1,5 @@
 import { NavItem } from '@/components/atoms/NavItem/NavItem';
-import { NavItemProps } from '@/components/atoms/NavItem/navItem.types';
+import { NavItemTypes } from '@/components/atoms/NavItem/navItem.types';
 import { useGlobalData } from '@/hooks/useGlobalData/useGlobalData';
 import { Link } from 'react-router-dom';
 
@@ -21,7 +21,7 @@ export const Header = () => {
                     </Link>
 
                     <ul className="flex space-x-8">
-                        {header.nav.map((item: NavItemProps, index: number) => (
+                        {header.nav.map((item: NavItemTypes, index: number) => (
                             <NavItem key={index} {...item} />
                         ))}
                     </ul>

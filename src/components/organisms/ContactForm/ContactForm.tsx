@@ -21,7 +21,6 @@ const contactFormSchema = z.object({
 type ContactFormData = z.infer<typeof contactFormSchema>;
 
 export const ContactForm = ({ block }: ContactFormProps) => {
-    // const { title, description, form } = block;
     const {
         register,
         handleSubmit,

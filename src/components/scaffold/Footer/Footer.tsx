@@ -1,5 +1,5 @@
 import { NavItem } from '@/components/atoms/NavItem/NavItem';
-import { NavItemProps } from '@/components/atoms/NavItem/navItem.types';
+import { NavItemTypes } from '@/components/atoms/NavItem/navItem.types';
 import Icon from '@/components/ui/Icon';
 import { useGlobalData } from '@/hooks/useGlobalData/useGlobalData';
 
@@ -22,7 +22,7 @@ export const Footer = () => {
                     <div>
                         <h3 className="text-lg font-semibold mb-4">Nawigacja</h3>
                         <ul className="space-y-2">
-                            {footer.nav.map((item: NavItemProps, index: number) => (
+                            {footer.nav.map((item: NavItemTypes, index: number) => (
                                 <NavItem key={index} {...item} />
                             ))}
                         </ul>

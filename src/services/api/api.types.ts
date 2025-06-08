@@ -27,6 +27,24 @@ export interface HeroBlock {
     description?: string;
     background: Image;
 }
+// TODO: Try to refactor types as Image
+export interface GalleryBlock {
+    blockType: string;
+    images: {
+        image: {
+            imageDesktop: {
+                url: string;
+                alt: string;
+                webpUrl: string;
+            };
+            imageMobile: {
+                url: string;
+                alt: string;
+                webpUrl: string;
+            };
+        };
+    }[];
+}
 
 export interface TextBlock {
     blockType: string;
@@ -59,11 +77,6 @@ export interface AboutBlock {
     text: RichText;
     image: Image;
     aboutLink: Link;
-}
-
-export interface GalleryBlock {
-    blockType: string;
-    images: Image[];
 }
 
 export interface FeaturedBlock {

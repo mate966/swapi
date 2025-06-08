@@ -1,5 +1,6 @@
 import { About } from '@/components/organisms/About.tsx/About';
 import { CompendiumCategory } from '@/components/organisms/CompendiumCategory/CompendiumCategory';
+import { ContactForm } from '@/components/organisms/ContactForm/ContactForm';
 import { Cta } from '@/components/organisms/Cta/Cta';
 import { Featured } from '@/components/organisms/Featured/Featured';
 import { Gallery } from '@/components/organisms/Gallery/Gallery';
@@ -8,7 +9,6 @@ import { Image } from '@/components/organisms/Image/Image';
 import { Quote } from '@/components/organisms/Quote/Quote';
 import { Text } from '@/components/organisms/Text/Text';
 
-import { ContactForm } from '@/components/organisms/ContactForm/ContactForm';
 import { ModuleComponent, ModuleType } from '@/types/module.types';
 import {
     AboutBlock,

@@ -134,6 +134,13 @@ export const FILTER_OPTIONS: Record<CategoryType, FilterOptions> = {
             'sail barge',
             'unknown',
         ],
+        manufacturer: [
+            'Corellian Engineering Corporation',
+            'Kuat Drive Yards',
+            'Sienar Fleet Systems',
+            'Kuat Systems Engineering',
+            'Nubia Star Drives',
+        ],
     },
 };
 
@@ -149,4 +156,5 @@ export const FIELD_MAPPING: Record<string, string> = {
     designation: 'designation',
     starship_class: 'starship_class',
     vehicle_class: 'vehicle_class',
+    manufacturer: 'manufacturer',
 };

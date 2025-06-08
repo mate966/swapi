@@ -4,5 +4,7 @@ export const PLANETS_FRAGMENT = gql`
     fragment Planets on Planet {
         id
         name
+        climate
+        terrain
     }
 `;

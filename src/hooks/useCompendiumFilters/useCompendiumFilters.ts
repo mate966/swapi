@@ -31,24 +31,13 @@ export const useCompendiumFilters = (category: CategoryType, categoryData: Compe
                         } else {
                             String(value)
                                 .split(',')
-                                .forEach(v => uniqueValues.add(v.trim().toLowerCase()));
+                                .map(v => v.trim().toLowerCase())
+                                .forEach(v => uniqueValues.add(v));
                         }
                     }
                 });
 
-                const availableValues = (possibleValues as string[]).filter(possibleValue => {
-                    const possibleValueLower = possibleValue.toLowerCase();
-                    return Array.from(uniqueValues).some(
-                        actualValue =>
-                            actualValue === possibleValueLower ||
-                            actualValue.includes(possibleValueLower) ||
-                            possibleValueLower.includes(actualValue),
-                    );
-                });
-
-                if (availableValues.length > 0) {
-                    filters[filterKey] = availableValues;
-                }
+                filters[filterKey] = possibleValues as string[];
             },
         );
 
@@ -83,11 +72,18 @@ export const useCompendiumFilters = (category: CategoryType, categoryData: Compe
 
                     const itemValues = Array.isArray(itemValue)
                         ? itemValue.map(v => String(v).toLowerCase())
-                        : [String(itemValue).toLowerCase()];
+                        : String(itemValue)
+                              .split(',')
+                              .map(v => v.trim().toLowerCase());
 
                     return filterValues.some(filterValue => {
                         const filterValueLower = filterValue.toLowerCase();
-                        return itemValues.some(itemValue => itemValue === filterValueLower);
+                        return itemValues.some(
+                            itemValue =>
+                                itemValue === filterValueLower ||
+                                itemValue.includes(filterValueLower) ||
+                                filterValueLower.includes(itemValue),
+                        );
                     });
                 });
             }

@@ -13,12 +13,10 @@ export const PlanetDetails = ({ item }: PlanetDetailsProps) => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-4">
                     <div>
-                        <h3 className="text-lg font-semibold text-gray-700">
-                            Podstawowe informacje
-                        </h3>
+                        <h3 className="text-lg font-semibold text-gray-700">Basic information</h3>
                         <dl className="mt-2 space-y-2">
                             <div className="flex justify-between">
-                                <dt className="text-gray-600">Okres rotacji:</dt>
+                                <dt className="text-gray-600">Rotation period:</dt>
                                 <dd>
                                     {item.rotation_period
                                         ? `${item.rotation_period} godzin`
@@ -26,33 +24,33 @@ export const PlanetDetails = ({ item }: PlanetDetailsProps) => {
                                 </dd>
                             </div>
                             <div className="flex justify-between">
-                                <dt className="text-gray-600">Okres orbitalny:</dt>
+                                <dt className="text-gray-600">Orbital period:</dt>
                                 <dd>
                                     {item.orbital_period ? `${item.orbital_period} dni` : 'N/A'}
                                 </dd>
                             </div>
                             <div className="flex justify-between">
-                                <dt className="text-gray-600">Średnica:</dt>
+                                <dt className="text-gray-600">Diameter:</dt>
                                 <dd>{item.diameter ? `${item.diameter} km` : 'N/A'}</dd>
                             </div>
                             <div className="flex justify-between">
-                                <dt className="text-gray-600">Klimat:</dt>
+                                <dt className="text-gray-600">Climate:</dt>
                                 <dd>{item.climate || 'N/A'}</dd>
                             </div>
                             <div className="flex justify-between">
-                                <dt className="text-gray-600">Grawitacja:</dt>
+                                <dt className="text-gray-600">Gravity:</dt>
                                 <dd>{item.gravity || 'N/A'}</dd>
                             </div>
                             <div className="flex justify-between">
-                                <dt className="text-gray-600">Teren:</dt>
+                                <dt className="text-gray-600">Terrain:</dt>
                                 <dd>{item.terrain || 'N/A'}</dd>
                             </div>
                             <div className="flex justify-between">
-                                <dt className="text-gray-600">Powierzchnia wody:</dt>
+                                <dt className="text-gray-600">Surface water:</dt>
                                 <dd>{item.surface_water ? `${item.surface_water}%` : 'N/A'}</dd>
                             </div>
                             <div className="flex justify-between">
-                                <dt className="text-gray-600">Populacja:</dt>
+                                <dt className="text-gray-600">Population:</dt>
                                 <dd>{item.population || 'N/A'}</dd>
                             </div>
                         </dl>
@@ -62,7 +60,7 @@ export const PlanetDetails = ({ item }: PlanetDetailsProps) => {
                 <div className="space-y-6">
                     {item.residents && item.residents.length > 0 && (
                         <div>
-                            <h3 className="text-lg font-semibold text-gray-700 mb-3">Mieszkańcy</h3>
+                            <h3 className="text-lg font-semibold text-gray-700 mb-3">Residents</h3>
                             <div className="grid grid-cols-1 gap-3">
                                 {item.residents.map(resident => (
                                     <CompendiumTile
@@ -77,7 +75,10 @@ export const PlanetDetails = ({ item }: PlanetDetailsProps) => {
                                             eye_color: '',
                                             birth_year: '',
                                             gender: '',
-                                            homeworld: '',
+                                            homeworld: {
+                                                id: '',
+                                                name: '',
+                                            },
                                             films: [],
                                             species: [],
                                             vehicles: [],
@@ -92,7 +93,7 @@ export const PlanetDetails = ({ item }: PlanetDetailsProps) => {
 
                     {item.films && item.films.length > 0 && (
                         <div>
-                            <h3 className="text-lg font-semibold text-gray-700 mb-3">Filmy</h3>
+                            <h3 className="text-lg font-semibold text-gray-700 mb-3">Films</h3>
                             <div className="grid grid-cols-1 gap-3">
                                 {item.films.map(film => (
                                     <CompendiumTile

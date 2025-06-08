@@ -4,5 +4,6 @@ export const FILMS_FRAGMENT = gql`
     fragment Films on Film {
         id
         title
+        director
     }
 `;

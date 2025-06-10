@@ -20,7 +20,7 @@
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "noFallthroughCasesInSwitch": true,
-        "baseUrl": ".",
+        "baseUrl": "./src",
         "types": [
             "vite/client",
             "react-router-dom"
@@ -61,6 +61,9 @@
             ],
             "@layouts/*": [
                 "src/layouts/*"
+            ],
+            "@graphQL/*": [
+                "graphQL/*"
             ]
         }
     },

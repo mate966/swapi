@@ -1,6 +1,6 @@
 export interface ResponsiveImageTypes {
-    srcDesktop: string;
-    srcMobile: string;
+    srcDesktop: string | null;
+    srcMobile: string | null;
     alt: string;
     webpDesktop?: string;
     webpMobile?: string;

@@ -15,8 +15,8 @@ export const About = ({ block }: AboutTypes) => {
     const html = convertLexicalToHTML({ data: text });
 
     const image = {
-        srcDesktop: imageDesktop?.webpUrl || imageDesktop?.url || '',
-        srcMobile: imageMobile?.webpUrl || imageMobile?.url || imageDesktop?.url || '',
+        srcDesktop: imageDesktop?.webpUrl || imageDesktop?.url || null,
+        srcMobile: imageMobile?.webpUrl || imageMobile?.url || imageDesktop?.url || null,
         alt: imageDesktop?.alt || 'Image',
     };
 

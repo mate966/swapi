@@ -9,9 +9,9 @@ export const Hero = ({ block }: HeroBlockTypes) => {
     } = block;
 
     const image = {
-        srcDesktop: imageDesktop?.webpUrl || imageDesktop?.url || '',
-        srcMobile: imageMobile?.webpUrl || imageMobile?.url || imageDesktop?.url || '',
-        alt: imageDesktop?.alt || 'Image',
+        srcDesktop: imageDesktop?.webpUrl || imageDesktop?.url || null,
+        srcMobile: imageMobile?.webpUrl || imageMobile?.url || imageDesktop?.url || null,
+        alt: imageDesktop?.alt || 'Hero background',
     };
 
     return (

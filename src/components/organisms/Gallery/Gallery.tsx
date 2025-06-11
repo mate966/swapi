@@ -15,13 +15,16 @@ export const Gallery = ({ block }: GalleryBlockTypes) => {
                 return (
                     <div key={idx}>
                         <ResponsiveImage
-                            srcDesktop={image.imageDesktop.webpUrl || image.imageDesktop.url}
+                            srcDesktop={
+                                image.imageDesktop?.webpUrl || image.imageDesktop?.url || null
+                            }
                             srcMobile={
                                 image.imageMobile?.webpUrl ||
                                 image.imageMobile?.url ||
-                                image.imageDesktop.url
+                                image.imageDesktop?.url ||
+                                null
                             }
-                            alt={image.imageDesktop.alt || 'Gallery image'}
+                            alt={image.imageDesktop?.alt || 'Gallery image'}
                         />
                     </div>
                 );

@@ -6,6 +6,7 @@ import { Planet } from '@/store/types/compendium/planet.types';
 import { Specie } from '@/store/types/compendium/species.types';
 import { Starship } from '@/store/types/compendium/starship.types';
 import { Vehicle } from '@/store/types/compendium/vehicle.types';
+import { Link } from 'react-router-dom';
 
 type CompendiumItem = Character | Film | Planet | Specie | Starship | Vehicle;
 
@@ -24,11 +25,11 @@ export const CompendiumTile = ({ item, category }: CompendiumTileProps) => {
     const title = 'title' in item ? item.title : item.name;
 
     return (
-        <a
-            href={link || '#'}
+        <Link
+            to={link || '#'}
             className="block p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
         >
             <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
-        </a>
+        </Link>
     );
 };

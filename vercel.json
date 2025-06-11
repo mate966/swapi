@@ -5,8 +5,8 @@
       "destination": "https://swapi-backend-production.up.railway.app/api/:path*"
     },
     {
-      "source": "/compendium/:path*",
-      "destination": "https://swapi-backend-production.up.railway.app/api/:path*"
+      "source": "/graphql",
+      "destination": "https://swapi-backend-production.up.railway.app/graphql"
     }
   ],
   "headers": [

@@ -99,3 +99,9 @@ button:focus-visible {
         background-color: #f9f9f9;
     }
 }
+
+.app-content {
+    transition: opacity 0.5s ease-in-out;
+    position: relative;
+    z-index: 1;
+}

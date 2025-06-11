@@ -3,9 +3,12 @@ import { swapiService } from '@/services/api/api';
 import { Page as PageType } from '@/services/api/api.types';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store';
 
 export const Page = () => {
     const location = useLocation();
+    const isPageLoaded = useSelector((state: RootState) => state.page.isPageLoaded);
     const [page, setPage] = useState<PageType | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -28,7 +31,7 @@ export const Page = () => {
         fetchPage();
     }, [location.pathname]);
 
-    if (loading) {
+    if (loading && !isPageLoaded) {
         return <div className="flex justify-center items-center min-h-screen">Loading...</div>;
     }
 

@@ -17,5 +17,6 @@ export const useGlobalData = () => {
         footer: data.footer,
         loading,
         error,
+        initialized,
     };
 };

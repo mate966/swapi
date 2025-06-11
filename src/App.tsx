@@ -8,19 +8,28 @@ import { Footer } from './components/scaffold/Footer/Footer';
 import SmoothScroll from './utils/SmoothScroller/SmoothScroller';
 
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Intro } from './components/scaffold/Intro/Intro';
+import { useSelector } from 'react-redux';
+import { RootState } from './store';
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 const App: React.FC = () => {
+    const isPageLoaded = useSelector((state: RootState) => state.page.isPageLoaded);
+
     return (
         <>
-            <SmoothScroll>
-                <Header />
-                <main className="pt-16">
-                    <Outlet />
-                </main>
-                <Footer />
-            </SmoothScroll>
+            {!isPageLoaded ? (
+                <Intro />
+            ) : (
+                <SmoothScroll>
+                    <Header />
+                    <main className="pt-16">
+                        <Outlet />
+                    </main>
+                    <Footer />
+                </SmoothScroll>
+            )}
         </>
     );
 };

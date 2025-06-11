@@ -1,5 +1,6 @@
-import { Header } from '@/services/api/api.types';
 import { store } from '.';
+import { Header } from '@/services/api/api.types';
+import { PageState } from './slices/pageSlice/pageSlice.types';
 
 export interface GlobalDataState {
     data: {
@@ -12,6 +13,7 @@ export interface GlobalDataState {
 
 export interface RootState {
     globalData: GlobalDataState;
+    page: PageState;
 }
 
 export type AppDispatch = typeof store.dispatch;

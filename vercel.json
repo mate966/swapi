@@ -7,6 +7,10 @@
     {
       "source": "/graphql",
       "destination": "https://swapi-backend-production.up.railway.app/graphql"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ],
   "headers": [

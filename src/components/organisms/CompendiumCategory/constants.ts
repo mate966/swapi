@@ -2,7 +2,7 @@ import { CompendiumCategory as CategoryType } from '@/store/types/compendium/com
 import { FilterOptions } from './types';
 
 export const LIMIT = 10;
-
+// TODO: Check where this is used and if it's still needed
 export const FILTER_OPTIONS: Record<CategoryType, FilterOptions> = {
     characters: {
         gender: ['male', 'female', 'n/a', 'hermaphrodite', 'none'],

@@ -1,7 +1,7 @@
 import App from '@/App';
-import { CompendiumDetailsPage } from '@/components/pages/CompendiumDetailsPage/CompendiumDetailsPage';
+import { CompendiumDetailsPage } from '@/components/pages/CompendiumDetailsPage';
 import { Page } from '@/components/pages/Page/Page';
-import { NotFound } from '@/components/scaffold/NotFound/NotFound';
+import { NotFound } from '@/components/scaffold/NotFound';
 import { createBrowserRouter } from 'react-router-dom';
 
 export const router = createBrowserRouter([
@@ -11,6 +11,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
+                // TODO: Add location to the page / handle with Curtain
                 element: <Page />,
             },
             {

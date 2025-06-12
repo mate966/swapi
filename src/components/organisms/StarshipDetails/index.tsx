@@ -1,5 +1,5 @@
-import { CompendiumTile } from '@/components/molecules/CompendiumTile/CompendiumTile';
-import { StarshipDetailsProps } from './starshipDetails.types';
+import { CompendiumTile } from '@/components/molecules/CompendiumTile';
+import { StarshipDetailsProps } from './types';
 
 export const StarshipDetails = ({ item }: StarshipDetailsProps) => {
     return (

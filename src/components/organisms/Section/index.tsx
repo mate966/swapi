@@ -1,5 +1,5 @@
 import { getModule } from '@/utils/getModule';
-import { SectionTypes } from './section.types';
+import { SectionTypes } from './types';
 
 export const Section = ({ block, index }: SectionTypes) => {
     const module = getModule(block);

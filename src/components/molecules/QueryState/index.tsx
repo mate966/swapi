@@ -1,4 +1,4 @@
-import { QueryStateProps } from './queryState.types';
+import { QueryStateProps } from './types';
 
 export const QueryState = ({ loading, error, empty, children }: QueryStateProps) => {
     if (loading)

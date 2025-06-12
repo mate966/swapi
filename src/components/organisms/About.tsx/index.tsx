@@ -1,8 +1,8 @@
-import { LinkItem } from '@/components/atoms/LinkItem/LinkItem';
-import TextXss from '@/components/atoms/TextXss/TextXss';
-import { ResponsiveImage } from '@/components/molecules/Image/ResponsiveImage';
+import { LinkItem } from '@/components/atoms/LinkItem';
+import TextXss from '@/components/atoms/TextXss';
+import { ResponsiveImage } from '@/components/molecules/Image';
 import { convertLexicalToHTML } from '@payloadcms/richtext-lexical/html';
-import { AboutTypes } from './about.types';
+import { AboutTypes } from './types';
 
 export const About = ({ block }: AboutTypes) => {
     const {

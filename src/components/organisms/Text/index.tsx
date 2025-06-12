@@ -1,6 +1,6 @@
-import TextXss from '@/components/atoms/TextXss/TextXss';
+import TextXss from '@/components/atoms/TextXss';
 import { convertLexicalToHTML } from '@payloadcms/richtext-lexical/html';
-import { TextTypes } from './text.types';
+import { TextTypes } from './types';
 
 export const Text = ({ block }: TextTypes) => {
     const { textTitle, text } = block;

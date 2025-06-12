@@ -1,5 +1,5 @@
-import { ResponsiveImage } from '@/components/molecules/Image/ResponsiveImage';
-import { GalleryBlockTypes } from './gallery.types';
+import { ResponsiveImage } from '@/components/molecules/Image';
+import { GalleryBlockTypes } from './types';
 
 export const Gallery = ({ block }: GalleryBlockTypes) => {
     const { images } = block;

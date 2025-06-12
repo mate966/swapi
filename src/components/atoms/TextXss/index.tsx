@@ -1,5 +1,5 @@
 import xss from 'xss';
-import type { TextXssTypes } from './textxss.types';
+import type { TextXssTypes } from './types';
 
 const TextXss = ({ text }: TextXssTypes) => {
     return (

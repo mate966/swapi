@@ -1,4 +1,4 @@
-import { QuoteTypes } from './quote.types';
+import { QuoteTypes } from './types';
 
 export const Quote = ({ block }: QuoteTypes) => {
     const { quote, author } = block;

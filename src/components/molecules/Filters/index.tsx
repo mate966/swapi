@@ -1,4 +1,4 @@
-import { FilterSectionProps } from './filters.types';
+import { FilterSectionProps } from './types';
 
 export const Filters = ({
     availableFilters,

@@ -1,5 +1,5 @@
-import { ResponsiveImage } from '@/components/molecules/Image/ResponsiveImage';
-import { HeroBlockTypes } from './hero.types';
+import { ResponsiveImage } from '@/components/molecules/Image';
+import { HeroBlockTypes } from './types';
 
 export const Hero = ({ block }: HeroBlockTypes) => {
     const {

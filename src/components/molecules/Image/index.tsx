@@ -1,4 +1,4 @@
-import { ResponsiveImageTypes } from './responsiveImage.types';
+import { ResponsiveImageTypes } from './types';
 
 export const ResponsiveImage = ({ ...image }: ResponsiveImageTypes) => {
     const {

@@ -1,10 +1,10 @@
-import { Button } from '@/components/atoms/Button/Button';
-import { Input } from '@/components/atoms/Input/Input';
-import { Textarea } from '@/components/atoms/Textarea/Textarea';
+import { Button } from '@/components/atoms/Button';
+import { Input } from '@/components/atoms/Input';
+import { Textarea } from '@/components/atoms/Textarea';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-import { ContactFormProps } from './contactForm.types';
+import { ContactFormProps } from './types';
 
 const contactFormSchema = z.object({
     name: z

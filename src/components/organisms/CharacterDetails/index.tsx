@@ -1,4 +1,4 @@
-import { CompendiumTile } from '@/components/molecules/CompendiumTile/CompendiumTile';
+import { CompendiumTile } from '@/components/molecules/CompendiumTile';
 import { useCompendiumLink } from '@/hooks/useCompendiumLink/useCompendiumLink';
 import { Character, RelatedItem } from '@/store/types/compendium/character.types';
 

@@ -1,4 +1,4 @@
-import { NavItemTypes } from '@/components/atoms/NavItem/navItem.types';
+import { NavItemTypes } from '@/components/atoms/NavItem/types';
 import { Character } from '@/store/types/compendium/character.types';
 import { Film } from '@/store/types/compendium/film.types';
 import { Planet } from '@/store/types/compendium/planet.types';

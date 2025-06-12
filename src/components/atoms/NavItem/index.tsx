@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { NavItemTypes } from './navItem.types';
+import { NavItemTypes } from './types';
 
 export const NavItem = ({ navigation }: NavItemTypes) => {
     const { link, subnav } = navigation;

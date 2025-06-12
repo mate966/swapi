@@ -1,4 +1,4 @@
-import { Section } from '@/components/organisms/Section/Section';
+import { Section } from '@/components/organisms/Section';
 import { swapiService } from '@/services/api/api';
 import { Page as PageType } from '@/services/api/api.types';
 import { useEffect, useState } from 'react';

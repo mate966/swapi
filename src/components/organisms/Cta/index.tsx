@@ -1,5 +1,5 @@
-import { LinkItem } from '@/components/atoms/LinkItem/LinkItem';
-import { CtaBlockTypes } from './cta.types';
+import { LinkItem } from '@/components/atoms/LinkItem';
+import { CtaBlockTypes } from './types';
 
 export const Cta = ({ block }: CtaBlockTypes) => {
     const { ctaTitle, copy, link } = block;

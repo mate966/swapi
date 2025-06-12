@@ -3,21 +3,18 @@ import { useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
-import { Header } from '@/components/scaffold/Header/Header';
-import { Footer } from '@/components/scaffold/Footer/Footer';
-import Intro from '@/components/scaffold/Intro/Intro';
+import { Header } from '@/components/scaffold/Header';
+import { Footer } from '@/components/scaffold/Footer';
+import Intro from '@/components/scaffold/Intro';
 import { Page } from '@/components/pages/Page/Page';
-import SmoothScroll from '@/utils/SmoothScroller/SmoothScroller';
+import SmoothScroll from '@/utils/SmoothScroller';
 import { RootState } from '@/store';
-import { Curtain } from '@/components/scaffold/Curtain/Curtain';
+import { Curtain } from '@/components/scaffold/Curtain';
 import { setIsCurtainVisible, setIsExitCompleted } from './store/slices/globalSlice/globalSlice';
 
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import './styles/main.scss';
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+import '@utils/plugins';
 
 const App = () => {
     const location = useLocation();

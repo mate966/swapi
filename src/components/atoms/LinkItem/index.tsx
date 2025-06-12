@@ -1,5 +1,5 @@
 import { Link as RouterLink } from 'react-router-dom';
-import { LinkItemTypes } from './linkItem.types';
+import { LinkItemTypes } from './types';
 
 export const LinkItem = ({ ...link }: LinkItemTypes) => {
     const { label, type, url, newTab, reference } = link;

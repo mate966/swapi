@@ -1,5 +1,5 @@
-import { ResponsiveImage } from '@/components/molecules/Image/ResponsiveImage';
-import { ImageTypes } from './image.types';
+import { ResponsiveImage } from '@/components/molecules/Image';
+import { ImageTypes } from './types';
 
 export const Image = ({ block }: ImageTypes) => {
     const {

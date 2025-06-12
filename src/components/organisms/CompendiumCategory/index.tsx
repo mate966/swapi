@@ -1,7 +1,7 @@
-import { CompendiumTile } from '@/components/molecules/CompendiumTile/CompendiumTile';
-import { Filters } from '@/components/molecules/Filters/Filters';
-import { LoadMoreButton } from '@/components/molecules/LoadMoreButton/LoadMoreButton';
-import { SortButton } from '@/components/molecules/SortButton/SortButton';
+import { CompendiumTile } from '@/components/molecules/CompendiumTile';
+import { Filters } from '@/components/molecules/Filters';
+import { LoadMoreButton } from '@/components/molecules/LoadMoreButton';
+import { SortButton } from '@/components/molecules/SortButton';
 import { useCompendiumData } from '@/hooks/useCompendiumData/useCompendiumData';
 import { useCompendiumSortAndFilter } from '@/hooks/useCompendiumSortAndFilter/useCompendiumSortAndFilter';
 import { CompendiumCategoryProps } from './types';

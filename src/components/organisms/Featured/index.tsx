@@ -1,12 +1,12 @@
-import { LinkItem } from '@/components/atoms/LinkItem/LinkItem';
-import { CompendiumTile } from '@/components/molecules/CompendiumTile/CompendiumTile';
+import { LinkItem } from '@/components/atoms/LinkItem';
+import { CompendiumTile } from '@/components/molecules/CompendiumTile';
 import { Character } from '@/store/types/compendium/character.types';
 import { Film } from '@/store/types/compendium/film.types';
 import { Planet } from '@/store/types/compendium/planet.types';
 import { Specie } from '@/store/types/compendium/species.types';
 import { Starship } from '@/store/types/compendium/starship.types';
 import { Vehicle } from '@/store/types/compendium/vehicle.types';
-import { FeaturedTypes } from './featured.types';
+import { FeaturedTypes } from './types';
 
 export const Featured = ({ block }: FeaturedTypes) => {
     const { title, linkedItem, featuredLink } = block;

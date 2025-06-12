@@ -1,5 +1,5 @@
-import { CompendiumTile } from '@/components/molecules/CompendiumTile/CompendiumTile';
-import { FilmDetailsProps } from './filmDetails.types';
+import { CompendiumTile } from '@/components/molecules/CompendiumTile';
+import { FilmDetailsProps } from './types';
 
 export const FilmDetails = ({ item }: FilmDetailsProps) => {
     return (

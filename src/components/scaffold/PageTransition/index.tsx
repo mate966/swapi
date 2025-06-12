@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Page } from '@/components/pages/Page/Page';
-import { Header } from '@/components/scaffold/Header/Header';
-import { Footer } from '@/components/scaffold/Footer/Footer';
-import SmoothScroll from '@/utils/SmoothScroller/SmoothScroller';
+import { Header } from '@/components/scaffold/Header';
+import { Footer } from '@/components/scaffold/Footer';
+import SmoothScroll from '@/utils/SmoothScroller';
 
 const pageVariants = {
     initial: { opacity: 0, y: 20 },

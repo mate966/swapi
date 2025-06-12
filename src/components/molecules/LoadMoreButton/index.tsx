@@ -1,4 +1,4 @@
-import { LoadMoreButtonProps } from './loadMoreButton.types';
+import { LoadMoreButtonProps } from './types';
 
 export const LoadMoreButton = ({ onLoadMore, disabled = false }: LoadMoreButtonProps) => {
     if (disabled) return null;

@@ -1,9 +1,6 @@
-import gsap from 'gsap';
-import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import { useEffect, useRef } from 'react';
-import { SmoothScrollProps } from './smoothScroller.types';
-
-gsap.registerPlugin(ScrollSmoother);
+import { SmoothScrollProps } from './types';
+import { ScrollSmoother } from 'gsap/ScrollSmoother';
 
 export default function SmoothScroll({ children }: SmoothScrollProps) {
     const wrapperRef = useRef<HTMLDivElement | null>(null);

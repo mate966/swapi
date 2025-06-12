@@ -1,10 +1,10 @@
-import { QueryState } from '@/components/molecules/QueryState/QueryState';
-import { CharacterDetails } from '@/components/organisms/CharacterDetails/CharacterDetails';
-import { FilmDetails } from '@/components/organisms/FilmDetails/FilmDetails';
-import { PlanetDetails } from '@/components/organisms/PlanetDetails/PlanetDetails';
-import { SpecieDetails } from '@/components/organisms/SpecieDetails/SpecieDetails';
-import { StarshipDetails } from '@/components/organisms/StarshipDetails/StarshipDetails';
-import { VehicleDetails } from '@/components/organisms/VehicleDetails/VehicleDetails';
+import { QueryState } from '@/components/molecules/QueryState';
+import { CharacterDetails } from '@/components/organisms/CharacterDetails';
+import { FilmDetails } from '@/components/organisms/FilmDetails';
+import { PlanetDetails } from '@/components/organisms/PlanetDetails';
+import { SpecieDetails } from '@/components/organisms/SpecieDetails';
+import { StarshipDetails } from '@/components/organisms/StarshipDetails';
+import { VehicleDetails } from '@/components/organisms/VehicleDetails';
 import { GET_CHARACTER } from '@/graphQL/queries/Characters/getCharacter';
 import { GET_FILM } from '@/graphQL/queries/Films/getFilm';
 import { GET_PLANET } from '@/graphQL/queries/Planets/getPlanet';

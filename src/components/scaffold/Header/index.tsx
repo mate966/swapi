@@ -1,5 +1,5 @@
-import { NavItem } from '@/components/atoms/NavItem/NavItem';
-import { NavItemTypes } from '@/components/atoms/NavItem/navItem.types';
+import { NavItem } from '@/components/atoms/NavItem';
+import { NavItemTypes } from '@/components/atoms/NavItem/types';
 import { useGlobalData } from '@/hooks/useGlobalData/useGlobalData';
 import { Link } from 'react-router-dom';
 

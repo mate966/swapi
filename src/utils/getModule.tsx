@@ -1,13 +1,13 @@
-import { About } from '@/components/organisms/About.tsx/About';
-import { CompendiumCategory } from '@/components/organisms/CompendiumCategory/CompendiumCategory';
-import { ContactForm } from '@/components/organisms/ContactForm/ContactForm';
-import { Cta } from '@/components/organisms/Cta/Cta';
-import { Featured } from '@/components/organisms/Featured/Featured';
-import { Gallery } from '@/components/organisms/Gallery/Gallery';
-import { Hero } from '@/components/organisms/Hero/Hero';
-import { Image } from '@/components/organisms/Image/Image';
-import { Quote } from '@/components/organisms/Quote/Quote';
-import { Text } from '@/components/organisms/Text/Text';
+import { About } from '@/components/organisms/About.tsx';
+import { CompendiumCategory } from '@/components/organisms/CompendiumCategory';
+import { ContactForm } from '@/components/organisms/ContactForm';
+import { Cta } from '@/components/organisms/Cta';
+import { Featured } from '@/components/organisms/Featured';
+import { Gallery } from '@/components/organisms/Gallery';
+import { Hero } from '@/components/organisms/Hero';
+import { Image } from '@/components/organisms/Image';
+import { Quote } from '@/components/organisms/Quote';
+import { Text } from '@/components/organisms/Text';
 
 import { ModuleComponent, ModuleType } from '@/types/module.types';
 import {

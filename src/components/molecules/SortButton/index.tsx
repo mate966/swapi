@@ -1,4 +1,4 @@
-import { SortButtonProps } from './sortButton.types';
+import { SortButtonProps } from './types';
 
 export const SortButton = ({ sortDirection, onSortChange }: SortButtonProps) => {
     return (

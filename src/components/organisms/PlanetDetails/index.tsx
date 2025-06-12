@@ -1,4 +1,4 @@
-import { CompendiumTile } from '@/components/molecules/CompendiumTile/CompendiumTile';
+import { CompendiumTile } from '@/components/molecules/CompendiumTile';
 import { Planet } from '@/store/types/compendium/planet.types';
 
 type PlanetDetailsProps = {

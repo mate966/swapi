@@ -2,13 +2,12 @@ import { Section } from '@/components/organisms/Section/Section';
 import { swapiService } from '@/services/api/api';
 import { Page as PageType } from '@/services/api/api.types';
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Location } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 
-export const Page = () => {
-    const location = useLocation();
-    const isPageLoaded = useSelector((state: RootState) => state.page.isPageLoaded);
+export const Page = ({ location }: { location: Location }) => {
+    const isPageLoaded = useSelector((state: RootState) => state.global.isPageLoaded);
     const [page, setPage] = useState<PageType | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);

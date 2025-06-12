@@ -4,12 +4,14 @@ interface GlobalState {
     isPageLoaded: boolean;
     isCurtainVisible: boolean;
     isExitCompleted: boolean;
+    isIntroPlayed: boolean;
 }
 
 const initialState: GlobalState = {
     isPageLoaded: false,
     isCurtainVisible: false,
     isExitCompleted: false,
+    isIntroPlayed: false,
 };
 
 const globalSlice = createSlice({
@@ -25,8 +27,12 @@ const globalSlice = createSlice({
         setIsExitCompleted: (state, action: PayloadAction<boolean>) => {
             state.isExitCompleted = action.payload;
         },
+        setIsIntroPlayed: (state, action: PayloadAction<boolean>) => {
+            state.isIntroPlayed = action.payload;
+        },
     },
 });
 
-export const { setIsPageLoaded, setIsCurtainVisible, setIsExitCompleted } = globalSlice.actions;
+export const { setIsPageLoaded, setIsCurtainVisible, setIsExitCompleted, setIsIntroPlayed } =
+    globalSlice.actions;
 export default globalSlice.reducer;

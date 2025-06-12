@@ -11,6 +11,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
+                // TODO: Add location to the page / handle with Curtain
                 element: <Page />,
             },
             {

@@ -8,7 +8,6 @@ import { PlanetDetails } from '@/components/organisms/PlanetDetails';
 import { SpecieDetails } from '@/components/organisms/SpecieDetails';
 import { StarshipDetails } from '@/components/organisms/StarshipDetails';
 import { VehicleDetails } from '@/components/organisms/VehicleDetails';
-
 import { GET_CHARACTER } from '@/graphQL/queries/Characters/getCharacter';
 import { GET_FILM } from '@/graphQL/queries/Films/getFilm';
 import { GET_PLANET } from '@/graphQL/queries/Planets/getPlanet';

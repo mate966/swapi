@@ -1,4 +1,3 @@
-import { GalleryBlock } from '@/services/api/api.types';
 import { gql } from '@apollo/client';
 
 // TODO: Try to refactor

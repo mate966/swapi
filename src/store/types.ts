@@ -1,5 +1,5 @@
+import { Header } from '@/components/scaffold/Header/types';
 import { store } from '.';
-import { Header } from '@/services/api/api.types';
 // import { PageState } from './slices/pageSlice/pageSlice.types';
 
 export interface GlobalDataState {

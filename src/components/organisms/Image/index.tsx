@@ -1,7 +1,7 @@
 import { ResponsiveImage } from '@/components/molecules/Image';
-import { ImageTypes } from './types';
+import { ImageBlock } from './types';
 
-export const Image = ({ block }: ImageTypes) => {
+export const Image = ({ block }: { block: ImageBlock }) => {
     const {
         image: { imageDesktop, imageMobile },
     } = block;

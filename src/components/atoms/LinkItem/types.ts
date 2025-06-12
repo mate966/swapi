@@ -8,4 +8,7 @@ export interface LinkItemTypes {
             slug: string;
         };
     };
+    url: string;
+    newTab: boolean;
+    label: string;
 }

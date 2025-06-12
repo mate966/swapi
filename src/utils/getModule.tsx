@@ -16,12 +16,10 @@ import { Text } from '@/components/organisms/Text';
 import { TextBlock } from '@/components/organisms/Text/types';
 
 import { ModuleComponent, ModuleType } from '@/types/module.types';
-import {
-    CompendiumCategoryBlock,
-    ContactFormBlock,
-    FeaturedBlock,
-    GalleryBlock,
-} from '../services/api/api.types';
+import { CompendiumCategoryBlock, ContactFormBlock } from '../services/api/api.types';
+
+import { FeaturedBlock } from '@/components/organisms/Featured/types';
+import { GalleryBlock } from '@/components/organisms/Gallery/types';
 
 export const getModule = (block: ModuleType): ModuleComponent<ModuleType> | null => {
     switch (block.blockType) {

@@ -1,4 +1,4 @@
-import { Link } from '@/services/api/api.types';
+import { LinkItemTypes } from '@/components/atoms/LinkItem/types';
 import { Character } from '@/store/types/compendium/character.types';
 import { Film } from '@/store/types/compendium/film.types';
 import { Planet } from '@/store/types/compendium/planet.types';
@@ -18,5 +18,5 @@ export interface FeaturedBlock {
         item_species?: Specie[];
         item_films?: Film[];
     };
-    featuredLink: Link;
+    featuredLink: LinkItemTypes;
 }

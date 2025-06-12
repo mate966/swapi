@@ -1,7 +1,7 @@
 import { ResponsiveImage } from '@/components/molecules/Image';
-import { GalleryBlockTypes } from './types';
+import { GalleryBlock } from './types';
 
-export const Gallery = ({ block }: GalleryBlockTypes) => {
+export const Gallery = ({ block }: { block: GalleryBlock }) => {
     const { images } = block;
 
     // TODO: Try to refactor

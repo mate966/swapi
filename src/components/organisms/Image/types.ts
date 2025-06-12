@@ -1,5 +1,6 @@
-import { ImageBlock } from '@/services/api/api.types';
-
-export type ImageTypes = {
-    block: ImageBlock;
-};
+import { Image } from '@/services/api/api.types';
+export interface ImageBlock {
+    blockType: string;
+    image: Image;
+    caption: string;
+}

@@ -1,13 +1,15 @@
-import { Section } from '@/components/organisms/Section';
+import { useEffect, useState } from 'react';
+
 import { swapiService } from '@/services/api/api';
 import { Page as PageType } from '@/services/api/api.types';
-import { useEffect, useState } from 'react';
-import { Location } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/store';
+import { useAppSelector } from '@/hooks/useRedux/useRedux';
 
-export const Page = ({ location }: { location: Location }) => {
-    const isPageLoaded = useSelector((state: RootState) => state.global.isPageLoaded);
+import { RootState } from '@/store';
+import { Section } from '@/components/organisms/Section';
+
+export const Page = () => {
+    const isPageLoaded = useAppSelector((state: RootState) => state.global.isPageLoaded);
+    const displayedLocation = useAppSelector((state: RootState) => state.global.displayedLocation);
     const [page, setPage] = useState<PageType | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -16,7 +18,8 @@ export const Page = ({ location }: { location: Location }) => {
         const fetchPage = async () => {
             try {
                 setLoading(true);
-                const pageSlug = location.pathname === '/' ? '/home' : location.pathname;
+                const pageSlug =
+                    displayedLocation.pathname === '/' ? '/home' : displayedLocation.pathname;
                 const data = await swapiService.getPage(pageSlug);
                 setPage(data);
             } catch (err) {
@@ -28,7 +31,7 @@ export const Page = ({ location }: { location: Location }) => {
         };
 
         fetchPage();
-    }, [location.pathname]);
+    }, [displayedLocation]);
 
     if (loading && !isPageLoaded) {
         return <div className="flex justify-center items-center min-h-screen">Loading...</div>;

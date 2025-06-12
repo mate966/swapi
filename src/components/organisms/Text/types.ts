@@ -1,5 +1,7 @@
-import { TextBlock } from '@/services/api/api.types';
+import { RichText } from '@/services/api/api.types';
 
-export type TextTypes = {
-    block: TextBlock;
-};
+export interface TextBlock {
+    blockType: string;
+    textTitle: string;
+    text: RichText;
+}

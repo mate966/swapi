@@ -1,28 +1,34 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
 
+import { useAppDispatch, useAppSelector } from '@/hooks/useRedux/useRedux';
+
+import { Page } from '@/components/pages/Page/Page';
+import { Intro } from '@/components/scaffold/Intro';
+import { Curtain } from '@/components/scaffold/Curtain';
 import { Header } from '@/components/scaffold/Header';
 import { Footer } from '@/components/scaffold/Footer';
-import Intro from '@/components/scaffold/Intro';
-import { Page } from '@/components/pages/Page/Page';
-import SmoothScroll from '@/utils/SmoothScroller';
+
 import { RootState } from '@/store';
-import { Curtain } from '@/components/scaffold/Curtain';
-import { setIsCurtainVisible, setIsExitCompleted } from './store/slices/globalSlice/globalSlice';
+import {
+    setIsCurtainVisible,
+    setIsExitCompleted,
+    setDisplayedLocation,
+} from '@/store/slices/globalSlice';
 
-import './styles/main.scss';
+import SmoothScroll from '@/components/utils/SmoothScroller';
 
-import '@utils/plugins';
+import '@/utils/plugins';
+import '@/styles/main.scss';
 
 const App = () => {
     const location = useLocation();
-    const dispatch = useDispatch();
-    const isPageLoaded = useSelector((state: RootState) => state.global.isPageLoaded);
-    const isCurtainVisible = useSelector((state: RootState) => state.global.isCurtainVisible);
-    // const isIntroPlayed = useSelector((state: RootState) => state.global.isIntroPlayed);
-    const [displayedLocation, setDisplayedLocation] = useState(location);
+    const dispatch = useAppDispatch();
+
+    const isPageLoaded = useAppSelector((state: RootState) => state.global.isPageLoaded);
+    const isCurtainVisible = useAppSelector((state: RootState) => state.global.isCurtainVisible);
+    const displayedLocation = useAppSelector((state: RootState) => state.global.displayedLocation);
 
     useEffect(() => {
         if (location.pathname !== displayedLocation.pathname) {
@@ -31,8 +37,8 @@ const App = () => {
     }, [location, displayedLocation, dispatch]);
 
     const handleCurtainExited = () => {
-        setDisplayedLocation(location);
         dispatch(setIsCurtainVisible(false));
+        dispatch(setDisplayedLocation(location));
         dispatch(setIsExitCompleted(true));
     };
 
@@ -41,10 +47,9 @@ const App = () => {
             <Header />
 
             <div className="app">
-                <AnimatePresence mode="wait">
+                <AnimatePresence mode="wait" onExitComplete={handleCurtainExited}>
                     {isPageLoaded && (
                         <motion.div
-                            key={displayedLocation.pathname}
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
@@ -52,7 +57,7 @@ const App = () => {
                         >
                             <SmoothScroll>
                                 <main>
-                                    <Page location={displayedLocation} />
+                                    <Page />
                                 </main>
                                 <Footer />
                             </SmoothScroll>

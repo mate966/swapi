@@ -1,6 +1,7 @@
 import { Link as RouterLink } from 'react-router-dom';
 import { LinkItemTypes } from './types';
 
+// FIXME: Refactor types
 export const LinkItem = ({ ...link }: LinkItemTypes) => {
     const { label, type, url, newTab, reference } = link;
 

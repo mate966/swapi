@@ -1,17 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-interface GlobalState {
-    isPageLoaded: boolean;
-    isCurtainVisible: boolean;
-    isExitCompleted: boolean;
-    isIntroPlayed: boolean;
-}
+import { Location } from 'react-router-dom';
+import { GlobalState } from './types';
 
 const initialState: GlobalState = {
     isPageLoaded: false,
     isCurtainVisible: false,
     isExitCompleted: false,
-    isIntroPlayed: false,
+    displayedLocation: {
+        pathname: '/',
+        search: '',
+        hash: '',
+        state: null,
+        key: '',
+    },
 };
 
 const globalSlice = createSlice({
@@ -27,12 +28,12 @@ const globalSlice = createSlice({
         setIsExitCompleted: (state, action: PayloadAction<boolean>) => {
             state.isExitCompleted = action.payload;
         },
-        setIsIntroPlayed: (state, action: PayloadAction<boolean>) => {
-            state.isIntroPlayed = action.payload;
+        setDisplayedLocation: (state, action: PayloadAction<Location>) => {
+            state.displayedLocation = action.payload;
         },
     },
 });
 
-export const { setIsPageLoaded, setIsCurtainVisible, setIsExitCompleted, setIsIntroPlayed } =
+export const { setIsPageLoaded, setIsCurtainVisible, setIsExitCompleted, setDisplayedLocation } =
     globalSlice.actions;
 export default globalSlice.reducer;

@@ -1,3 +1,11 @@
-import { Link } from '@/services/api/api.types';
-
-export type LinkItemTypes = Link;
+export interface LinkItemTypes {
+    type: string;
+    reference: {
+        relationTo: string;
+        value: {
+            id: string;
+            title: string;
+            slug: string;
+        };
+    };
+}

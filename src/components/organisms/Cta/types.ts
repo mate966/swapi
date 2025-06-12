@@ -1,5 +1,8 @@
-import { CtaBlock } from '@/services/api/api.types';
+import { Link } from '@/services/api/api.types';
 
-export type CtaBlockTypes = {
-    block: CtaBlock;
-};
+export interface CtaBlock {
+    blockType: string;
+    ctaTitle: string;
+    copy: string;
+    link: Link;
+}

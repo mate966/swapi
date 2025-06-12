@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 // import authReducer from './slices/authSlice/authSlice';
 import globalDataReducer from './slices/globalDataSlice/globalDataSlice';
 // import pageReducer from './slices/pageSlice/pageSlice';
-import globalReducer from './slices/globalSlice/globalSlice';
+import globalReducer from './slices/globalSlice';
 // import pagesReducer from './slices/pagesSlice';
 // import headerReducer from './slices/headerSlice/headerSlice';
 

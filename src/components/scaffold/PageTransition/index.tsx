@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Page } from '@/components/pages/Page/Page';
 import { Header } from '@/components/scaffold/Header';
 import { Footer } from '@/components/scaffold/Footer';
-import SmoothScroll from '@/utils/SmoothScroller';
+import SmoothScroll from '@/components/utils/SmoothScroller';
 
 const pageVariants = {
     initial: { opacity: 0, y: 20 },

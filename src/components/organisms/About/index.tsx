@@ -2,9 +2,9 @@ import { LinkItem } from '@/components/atoms/LinkItem';
 import TextXss from '@/components/atoms/TextXss';
 import { ResponsiveImage } from '@/components/molecules/Image';
 import { convertLexicalToHTML } from '@payloadcms/richtext-lexical/html';
-import { AboutTypes } from './types';
+import { AboutBlock } from './types';
 
-export const About = ({ block }: AboutTypes) => {
+export const About = ({ block }: { block: AboutBlock }) => {
     const {
         title,
         text,

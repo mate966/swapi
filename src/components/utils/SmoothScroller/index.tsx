@@ -1,12 +1,13 @@
 import { useEffect, useRef } from 'react';
 import { SmoothScrollProps } from './types';
-import { ScrollSmoother } from 'gsap/ScrollSmoother';
+import { ScrollSmoother } from 'gsap/dist/ScrollSmoother';
 
 export default function SmoothScroll({ children }: SmoothScrollProps) {
     const wrapperRef = useRef<HTMLDivElement | null>(null);
     const contentRef = useRef<HTMLDivElement | null>(null);
     const smootherRef = useRef<ScrollSmoother | null>(null);
 
+    // TODO: Handle resize
     useEffect(() => {
         if (!wrapperRef.current || !contentRef.current) {
             console.warn('SmoothScroller: No wrapper or content element found');

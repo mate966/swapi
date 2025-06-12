@@ -1,5 +1,5 @@
-import { QuoteBlock } from '@/services/api/api.types';
-
-export type QuoteTypes = {
-    block: QuoteBlock;
-};
+export interface QuoteBlock {
+    blockType: string;
+    quote: string;
+    author: string;
+}

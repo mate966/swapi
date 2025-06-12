@@ -23,6 +23,21 @@ export const GALLERY_BLOCK_FRAGMENT = gql`
     }
 `;
 
-export type GalleryBlockTypes = {
-    block: GalleryBlock;
-};
+// TODO: Try to refactor types as Image
+export interface GalleryBlock {
+    blockType: string;
+    images: {
+        image: {
+            imageDesktop: {
+                url: string;
+                alt: string;
+                webpUrl: string;
+            };
+            imageMobile: {
+                url: string;
+                alt: string;
+                webpUrl: string;
+            };
+        };
+    }[];
+}

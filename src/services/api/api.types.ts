@@ -1,98 +1,14 @@
-import { NavItemTypes } from '@/components/atoms/NavItem/types';
 import { Character } from '@/store/types/compendium/character.types';
-import { Film } from '@/store/types/compendium/film.types';
 import { Planet } from '@/store/types/compendium/planet.types';
-import { Specie } from '@/store/types/compendium/species.types';
-import { Starship } from '@/store/types/compendium/starship.types';
-import { Vehicle } from '@/store/types/compendium/vehicle.types';
 
-export interface Header {
-    nav: NavItemTypes[];
-    id: string;
-    title: string;
-}
-export interface Footer {
-    title: string;
-    copy: string;
-    copyright: string;
-    nav: NavItemTypes[];
-    social: SocialItem[];
-    id: string;
-}
-
-// Blocks
-export interface HeroBlock {
-    blockType: string;
-    heroTitle: string;
-    description?: string;
-    background: Image;
-}
-// TODO: Try to refactor types as Image
-export interface GalleryBlock {
-    blockType: string;
-    images: {
-        image: {
-            imageDesktop: {
-                url: string;
-                alt: string;
-                webpUrl: string;
-            };
-            imageMobile: {
-                url: string;
-                alt: string;
-                webpUrl: string;
-            };
-        };
-    }[];
-}
-
-export interface TextBlock {
-    blockType: string;
-    textTitle: string;
-    text: RichText;
-}
-
-export interface CtaBlock {
-    blockType: string;
-    ctaTitle: string;
-    copy: string;
-    link: Link;
-}
-
-export interface QuoteBlock {
-    blockType: string;
-    quote: string;
-    author: string;
-}
-
-export interface ImageBlock {
-    blockType: string;
-    image: Image;
-    caption: string;
-}
-
-export interface AboutBlock {
-    blockType: string;
-    title: string;
-    text: RichText;
-    image: Image;
-    aboutLink: Link;
-}
-
-export interface FeaturedBlock {
-    blockType: string;
-    title: string;
-    linkedItem: {
-        category: 'characters' | 'planets' | 'starships' | 'vehicles' | 'species' | 'films';
-        item_characters?: Character[];
-        item_planets?: Planet[];
-        item_starships?: Starship[];
-        item_vehicles?: Vehicle[];
-        item_species?: Specie[];
-        item_films?: Film[];
-    };
-    featuredLink: Link;
-}
+import { AboutBlock } from '@/components/organisms/About/types';
+import { HeroBlock } from '@/components/organisms/Hero/types';
+import { CtaBlock } from '@/components/organisms/Cta/types';
+import { QuoteBlock } from '@/components/organisms/Quote/types';
+import { TextBlock } from '@/components/organisms/Text/types';
+import { ImageBlock } from '@/components/organisms/Image/types';
+import { GalleryBlock } from '@/components/organisms/Gallery/types';
+import { FeaturedBlock } from '@/components/organisms/Featured/types';
 
 export interface CompendiumCategoryBlock {
     blockType: string;
@@ -189,19 +105,4 @@ export type RichText = {
 export interface SocialItem {
     link: SocialLink;
     icon: string;
-}
-
-export interface Link {
-    type: string;
-    reference: {
-        relationTo: string;
-        value: {
-            id: string;
-            title: string;
-            slug: string;
-        };
-    };
-    url: string;
-    newTab: boolean;
-    label: string;
 }

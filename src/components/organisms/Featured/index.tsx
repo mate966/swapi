@@ -6,9 +6,9 @@ import { Planet } from '@/store/types/compendium/planet.types';
 import { Specie } from '@/store/types/compendium/species.types';
 import { Starship } from '@/store/types/compendium/starship.types';
 import { Vehicle } from '@/store/types/compendium/vehicle.types';
-import { FeaturedTypes } from './types';
+import { FeaturedBlock } from './types';
 
-export const Featured = ({ block }: FeaturedTypes) => {
+export const Featured = ({ block }: { block: FeaturedBlock }) => {
     const { title, linkedItem, featuredLink } = block;
 
     const renderItems = (items: (Character | Planet | Starship | Vehicle | Specie | Film)[]) => (

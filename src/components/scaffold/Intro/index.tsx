@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/store/index';
 import styles from './Intro.module.scss';
-import { setIsIntroPlayed, setIsPageLoaded } from '@/store/slices/globalSlice/globalSlice';
+import { setIsPageLoaded } from '@/store/slices/globalSlice';
 
-const Intro = () => {
+export const Intro = () => {
     const dispatch = useDispatch();
     const isPageLoaded = useSelector((state: RootState) => state.global.isPageLoaded);
     const [progress, setProgress] = useState(0);
@@ -24,7 +24,6 @@ const Intro = () => {
                 frame = requestAnimationFrame(animateProgress);
             } else {
                 dispatch(setIsPageLoaded(true));
-                dispatch(setIsIntroPlayed(true));
             }
         };
 
@@ -49,5 +48,3 @@ const Intro = () => {
         </AnimatePresence>
     );
 };
-
-export default Intro;

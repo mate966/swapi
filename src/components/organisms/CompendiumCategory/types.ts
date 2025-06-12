@@ -27,3 +27,5 @@ export type FilterMapping = {
 export type ActiveFilters = {
     [key: string]: string[];
 };
+
+// TODO: Refactor this to use the new types

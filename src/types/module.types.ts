@@ -1,15 +1,13 @@
-import {
-    AboutBlock,
-    CompendiumCategoryBlock,
-    ContactFormBlock,
-    CtaBlock,
-    FeaturedBlock,
-    GalleryBlock,
-    HeroBlock,
-    ImageBlock,
-    QuoteBlock,
-    TextBlock,
-} from '@/services/api/api.types';
+import { AboutBlock } from '@/components/organisms/About/types';
+import { HeroBlock } from '@/components/organisms/Hero/types';
+import { TextBlock } from '@/components/organisms/Text/types';
+import { CtaBlock } from '@/components/organisms/Cta/types';
+import { QuoteBlock } from '@/components/organisms/Quote/types';
+import { ImageBlock } from '@/components/organisms/Image/types';
+import { FeaturedBlock } from '@/components/organisms/Featured/types';
+import { GalleryBlock } from '@/components/organisms/Gallery/types';
+
+import { CompendiumCategoryBlock, ContactFormBlock } from '@/services/api/api.types';
 
 export type ModuleType =
     | HeroBlock

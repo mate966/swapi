@@ -1,61 +1,73 @@
-import React, { useEffect } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 
-import { Header } from '@/components/scaffold/Header/Header';
-import gsap from 'gsap';
-import { ScrollSmoother } from 'gsap/ScrollSmoother';
-import { Footer } from './components/scaffold/Footer/Footer';
-import SmoothScroll from './utils/SmoothScroller/SmoothScroller';
+import { useAppDispatch, useAppSelector } from '@/hooks/useRedux/useRedux';
 
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Intro } from './components/scaffold/Intro/Intro';
-import { Curtain } from './components/scaffold/Curtain/Curtain';
-import { RootState } from './store';
-import { startTransition } from './store/slices/pageTransitionSlice/pageTransitionSlice';
-import { useGlobalData } from './hooks/useGlobalData/useGlobalData';
-import { useAppDispatch, useAppSelector } from './hooks/useRedux/useRedux';
+import { Page } from '@/components/pages/Page/Page';
+import { Intro } from '@/components/scaffold/Intro';
+import { Curtain } from '@/components/scaffold/Curtain';
+import { Header } from '@/components/scaffold/Header';
+import { Footer } from '@/components/scaffold/Footer';
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+import { RootState } from '@/store';
+import {
+    setIsCurtainVisible,
+    setIsExitCompleted,
+    setDisplayedLocation,
+} from '@/store/slices/globalSlice';
 
-const App: React.FC = () => {
+import SmoothScroll from '@/components/utils/SmoothScroller';
+
+import '@/utils/plugins';
+import '@/styles/main.scss';
+
+const App = () => {
     const location = useLocation();
     const dispatch = useAppDispatch();
-    const isPageLoaded = useAppSelector((state: RootState) => state.page.isPageLoaded);
-    const { initialized: isGlobalDataInitialized } = useGlobalData();
-    const prevPathRef = React.useRef(location.pathname);
+
+    const isPageLoaded = useAppSelector((state: RootState) => state.global.isPageLoaded);
+    const isCurtainVisible = useAppSelector((state: RootState) => state.global.isCurtainVisible);
+    const displayedLocation = useAppSelector((state: RootState) => state.global.displayedLocation);
 
     useEffect(() => {
-        if (
-            !isPageLoaded ||
-            !isGlobalDataInitialized ||
-            prevPathRef.current === location.pathname
-        ) {
-            prevPathRef.current = location.pathname;
-            return;
+        if (location.pathname !== displayedLocation.pathname) {
+            dispatch(setIsCurtainVisible(true));
         }
+    }, [location, displayedLocation, dispatch]);
 
-        dispatch(startTransition('in'));
-        const timer = setTimeout(() => {
-            dispatch(startTransition('out'));
-        }, 1000);
-
-        prevPathRef.current = location.pathname;
-        return () => clearTimeout(timer);
-    }, [location.pathname, isPageLoaded, isGlobalDataInitialized, dispatch]);
+    const handleCurtainExited = () => {
+        dispatch(setIsCurtainVisible(false));
+        dispatch(setDisplayedLocation(location));
+        dispatch(setIsExitCompleted(true));
+    };
 
     return (
         <>
-            <div className={`app-content ${!isPageLoaded ? 'opacity-0' : 'opacity-100'}`}>
-                <SmoothScroll>
-                    <Header />
-                    <main className="pt-16">
-                        <Outlet />
-                    </main>
-                    <Footer />
-                </SmoothScroll>
+            <Header />
+
+            <div className="app">
+                <AnimatePresence mode="wait" onExitComplete={handleCurtainExited}>
+                    {isPageLoaded && (
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.8, ease: 'easeOut' }}
+                        >
+                            <SmoothScroll>
+                                <main>
+                                    <Page />
+                                </main>
+                                <Footer />
+                            </SmoothScroll>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
-            <Curtain />
-            {!isPageLoaded && <Intro />}
+
+            <Intro />
+            <Curtain isVisible={isCurtainVisible} onExited={handleCurtainExited} />
         </>
     );
 };

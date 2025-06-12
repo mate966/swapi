@@ -3,7 +3,7 @@ import { CompendiumCategory as CategoryType } from '@/store/types/compendium/com
 import { useMemo, useState } from 'react';
 import { ActiveFilters, CompendiumItem } from '../../components/organisms/CompendiumCategory/types';
 
-import { AvailableFilters } from '@/components/molecules/Filters/filters.types';
+import { AvailableFilters } from '@/components/molecules/Filters/types';
 
 export const useCompendiumFilters = (category: CategoryType, categoryData: CompendiumItem[]) => {
     const [activeFilters, setActiveFilters] = useState<ActiveFilters>({});

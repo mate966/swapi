@@ -1,27 +1,25 @@
-import { About } from '@/components/organisms/About.tsx/About';
-import { CompendiumCategory } from '@/components/organisms/CompendiumCategory/CompendiumCategory';
-import { ContactForm } from '@/components/organisms/ContactForm/ContactForm';
-import { Cta } from '@/components/organisms/Cta/Cta';
-import { Featured } from '@/components/organisms/Featured/Featured';
-import { Gallery } from '@/components/organisms/Gallery/Gallery';
-import { Hero } from '@/components/organisms/Hero/Hero';
-import { Image } from '@/components/organisms/Image/Image';
-import { Quote } from '@/components/organisms/Quote/Quote';
-import { Text } from '@/components/organisms/Text/Text';
+import { About } from '@/components/organisms/About';
+import { AboutBlock } from '@/components/organisms/About/types';
+import { CompendiumCategory } from '@/components/organisms/CompendiumCategory';
+import { ContactForm } from '@/components/organisms/ContactForm';
+import { Cta } from '@/components/organisms/Cta';
+import { CtaBlock } from '@/components/organisms/Cta/types';
+import { Featured } from '@/components/organisms/Featured';
+import { Gallery } from '@/components/organisms/Gallery';
+import { Hero } from '@/components/organisms/Hero';
+import { HeroBlock } from '@/components/organisms/Hero/types';
+import { Image } from '@/components/organisms/Image';
+import { ImageBlock } from '@/components/organisms/Image/types';
+import { Quote } from '@/components/organisms/Quote';
+import { QuoteBlock } from '@/components/organisms/Quote/types';
+import { Text } from '@/components/organisms/Text';
+import { TextBlock } from '@/components/organisms/Text/types';
 
 import { ModuleComponent, ModuleType } from '@/types/module.types';
-import {
-    AboutBlock,
-    CompendiumCategoryBlock,
-    ContactFormBlock,
-    CtaBlock,
-    FeaturedBlock,
-    GalleryBlock,
-    HeroBlock,
-    ImageBlock,
-    QuoteBlock,
-    TextBlock,
-} from '../services/api/api.types';
+import { CompendiumCategoryBlock, ContactFormBlock } from '../services/api/api.types';
+
+import { FeaturedBlock } from '@/components/organisms/Featured/types';
+import { GalleryBlock } from '@/components/organisms/Gallery/types';
 
 export const getModule = (block: ModuleType): ModuleComponent<ModuleType> | null => {
     switch (block.blockType) {

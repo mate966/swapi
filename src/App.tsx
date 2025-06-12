@@ -1,61 +1,53 @@
-import React, { useEffect } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
-
+import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import { Header } from '@/components/scaffold/Header/Header';
+import { Footer } from '@/components/scaffold/Footer/Footer';
+import { Page } from '@/components/pages/Page/Page';
+import Intro from '@/components/scaffold/Intro/Intro';
+import Curtain from '@/components/scaffold/Curtain/Curtain';
+import RouteChange from '@/components/scaffold/RouteChange/RouteChange';
+import SmoothScroll from '@/utils/SmoothScroller/SmoothScroller';
+import './styles/main.scss';
 import gsap from 'gsap';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
-import { Footer } from './components/scaffold/Footer/Footer';
-import SmoothScroll from './utils/SmoothScroller/SmoothScroller';
-
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Intro } from './components/scaffold/Intro/Intro';
-import { Curtain } from './components/scaffold/Curtain/Curtain';
-import { RootState } from './store';
-import { startTransition } from './store/slices/pageTransitionSlice/pageTransitionSlice';
-import { useGlobalData } from './hooks/useGlobalData/useGlobalData';
-import { useAppDispatch, useAppSelector } from './hooks/useRedux/useRedux';
+import { duration } from './utils/pageTransition';
+import { wait } from './utils/wait';
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
-const App: React.FC = () => {
+const App = () => {
     const location = useLocation();
-    const dispatch = useAppDispatch();
-    const isPageLoaded = useAppSelector((state: RootState) => state.page.isPageLoaded);
-    const { initialized: isGlobalDataInitialized } = useGlobalData();
-    const prevPathRef = React.useRef(location.pathname);
+    const [isExitCompleted, setIsExitCompleted] = useState(false);
 
-    useEffect(() => {
-        if (
-            !isPageLoaded ||
-            !isGlobalDataInitialized ||
-            prevPathRef.current === location.pathname
-        ) {
-            prevPathRef.current = location.pathname;
-            return;
-        }
-
-        dispatch(startTransition('in'));
-        const timer = setTimeout(() => {
-            dispatch(startTransition('out'));
-        }, 1000);
-
-        prevPathRef.current = location.pathname;
-        return () => clearTimeout(timer);
-    }, [location.pathname, isPageLoaded, isGlobalDataInitialized, dispatch]);
+    const onExitComplete = async () => {
+        window.scrollTo(0, 0);
+        setIsExitCompleted(true);
+        await wait(duration);
+        setIsExitCompleted(false);
+    };
 
     return (
         <>
-            <div className={`app-content ${!isPageLoaded ? 'opacity-0' : 'opacity-100'}`}>
-                <SmoothScroll>
-                    <Header />
-                    <main className="pt-16">
-                        <Outlet />
-                    </main>
-                    <Footer />
-                </SmoothScroll>
+            <Header />
+
+            <div className="app">
+                <AnimatePresence mode="wait" initial={false} onExitComplete={onExitComplete}>
+                    <div key={location.pathname}>
+                        <SmoothScroll>
+                            <main>
+                                <Page />
+                            </main>
+                            <Footer />
+                        </SmoothScroll>
+                    </div>
+                </AnimatePresence>
             </div>
+
             <Curtain />
-            {!isPageLoaded && <Intro />}
+            <Intro />
+            <RouteChange isExitCompleted={isExitCompleted} />
         </>
     );
 };

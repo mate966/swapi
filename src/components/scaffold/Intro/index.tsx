@@ -1,15 +1,16 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '@/store/index';
+import { useAppDispatch, useAppSelector } from '@/hooks/useRedux/useRedux';
+import { RootState } from '@/store';
 import styles from './Intro.module.scss';
-import { setIsPageLoaded } from '@/store/slices/globalSlice';
+import { setIsIntroCompleted } from '@/store/slices/globalSlice';
 
 export const Intro = () => {
-    const dispatch = useDispatch();
-    const isPageLoaded = useSelector((state: RootState) => state.global.isPageLoaded);
+    const dispatch = useAppDispatch();
     const [progress, setProgress] = useState(0);
+    const isIntroCompleted = useAppSelector((state: RootState) => state.global.isIntroCompleted);
 
+    // TODO: Intro to local storage
     useEffect(() => {
         let frame: number;
         const duration = 1500;
@@ -23,7 +24,7 @@ export const Intro = () => {
             if (elapsed < duration) {
                 frame = requestAnimationFrame(animateProgress);
             } else {
-                dispatch(setIsPageLoaded(true));
+                dispatch(setIsIntroCompleted(true));
             }
         };
 
@@ -32,12 +33,11 @@ export const Intro = () => {
     }, [dispatch]);
 
     return (
-        <AnimatePresence mode="wait">
-            {!isPageLoaded && (
+        <AnimatePresence>
+            {!isIntroCompleted && (
                 <motion.div
                     key="intro"
                     className={styles.wrapper}
-                    initial={{ y: '0%' }}
                     animate={{ y: '0%' }}
                     exit={{ y: '100%' }}
                     transition={{ ease: [0.5, 0, 0.1, 1], duration: 0.5 }}

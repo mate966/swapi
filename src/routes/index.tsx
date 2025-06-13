@@ -1,8 +1,10 @@
+import { createBrowserRouter } from 'react-router-dom';
+
 import App from '@/App';
 import { CompendiumDetailsPage } from '@/components/pages/CompendiumDetailsPage';
 import { Page } from '@/components/pages/Page/Page';
 import { NotFound } from '@/components/scaffold/NotFound';
-import { createBrowserRouter } from 'react-router-dom';
+import { PageTransition } from '@/components/scaffold/PageTransition';
 
 export const router = createBrowserRouter([
     {
@@ -10,17 +12,21 @@ export const router = createBrowserRouter([
         element: <App />,
         children: [
             {
-                index: true,
-                // TODO: Add location to the page / handle with Curtain
-                element: <Page />,
-            },
-            {
-                path: 'compendium/:type/:id',
-                element: <CompendiumDetailsPage />,
-            },
-            {
-                path: '*',
-                element: <Page />,
+                element: <PageTransition />,
+                children: [
+                    {
+                        index: true,
+                        element: <Page />,
+                    },
+                    {
+                        path: 'compendium/:type/:id',
+                        element: <CompendiumDetailsPage />,
+                    },
+                    {
+                        path: '*',
+                        element: <Page />,
+                    },
+                ],
             },
         ],
         errorElement: <NotFound />,

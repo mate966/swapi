@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react';
 
 import { swapiService } from '@/services/api/api';
 import { Page as PageType } from '@/services/api/api.types';
-import { useAppSelector } from '@/hooks/useRedux/useRedux';
+import { useAppDispatch, useAppSelector } from '@/hooks/useRedux/useRedux';
 
 import { RootState } from '@/store';
 import { Section } from '@/components/organisms/Section';
+import { setIsPageLoaded } from '@/store/slices/globalSlice';
 
 export const Page = () => {
-    const isPageLoaded = useAppSelector((state: RootState) => state.global.isPageLoaded);
+    const dispatch = useAppDispatch();
     const displayedLocation = useAppSelector((state: RootState) => state.global.displayedLocation);
     const [page, setPage] = useState<PageType | null>(null);
     const [loading, setLoading] = useState(true);
@@ -22,6 +23,7 @@ export const Page = () => {
                     displayedLocation.pathname === '/' ? '/home' : displayedLocation.pathname;
                 const data = await swapiService.getPage(pageSlug);
                 setPage(data);
+                dispatch(setIsPageLoaded(true));
             } catch (err) {
                 setError('Failed to load page');
                 console.error('Page fetch error:', err);
@@ -31,9 +33,9 @@ export const Page = () => {
         };
 
         fetchPage();
-    }, [displayedLocation]);
+    }, [displayedLocation, dispatch]);
 
-    if (loading && !isPageLoaded) {
+    if (loading) {
         return <div className="flex justify-center items-center min-h-screen">Loading...</div>;
     }
 

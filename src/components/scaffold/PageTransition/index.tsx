@@ -1,82 +1,48 @@
-import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useAppSelector } from '@/hooks/useRedux/useRedux';
+import { useAppDispatch } from '@/hooks/useRedux/useRedux';
+import { useLocation, useOutlet } from 'react-router-dom';
+import { RootState } from '@/store';
+import { setIsCurtainVisible } from '@/store/slices/globalSlice';
+import { setDisplayedLocation } from '@/store/slices/globalSlice';
+import { useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Page } from '@/components/pages/Page/Page';
-import { Header } from '@/components/scaffold/Header';
-import { Footer } from '@/components/scaffold/Footer';
-import SmoothScroll from '@/components/utils/SmoothScroller';
-
-const pageVariants = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.6, -0.05, 0.01, 0.99] } },
-    exit: { opacity: 0, y: -20, transition: { duration: 0.5, ease: [0.6, -0.05, 0.01, 0.99] } },
-};
-
-const curtainVariants = {
-    initial: { y: '-100%' },
-    animate: { y: 0, transition: { duration: 0.5, ease: [0.6, -0.05, 0.01, 0.99] } },
-    exit: { y: '-100%', transition: { duration: 0.5, ease: [0.6, -0.05, 0.01, 0.99] } },
-};
 
 export const PageTransition = () => {
     const location = useLocation();
-    // const [isTransitioning, setIsTransitioning] = useState(false);
-    const [showCurtain, setShowCurtain] = useState(false);
-    const [currentPath, setCurrentPath] = useState(location.pathname);
-    const [nextPath, setNextPath] = useState<string | null>(null);
+    const outlet = useOutlet();
+    const dispatch = useAppDispatch();
+    const isCurtainVisible = useAppSelector((state: RootState) => state.global.isCurtainVisible);
+    const displayedLocation = useAppSelector((state: RootState) => state.global.displayedLocation);
+    const timerRef = useRef<NodeJS.Timeout | undefined>(undefined);
 
     useEffect(() => {
-        if (location.pathname !== currentPath) {
-            setNextPath(location.pathname);
-            setShowCurtain(true);
-            // setIsTransitioning(true);
-        }
-    }, [location.pathname, currentPath]);
+        if (location.pathname !== displayedLocation.pathname) {
+            dispatch(setIsCurtainVisible(true));
 
-    const handleCurtainAnimationComplete = (definition: string) => {
-        if (definition === 'animate' && nextPath) {
-            setCurrentPath(nextPath);
-            setNextPath(null);
-        } else if (definition === 'exit') {
-            // setIsTransitioning(false);
-            setShowCurtain(false);
+            timerRef.current = setTimeout(() => {
+                dispatch(setIsCurtainVisible(false));
+                dispatch(setDisplayedLocation(location));
+            }, 600);
+
+            return () => {
+                if (timerRef.current) {
+                    clearTimeout(timerRef.current);
+                }
+            };
         }
-    };
+    }, [location, displayedLocation, dispatch]);
 
     return (
-        <>
-            <AnimatePresence mode="wait">
-                <motion.div
-                    key={currentPath}
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
-                    variants={pageVariants}
-                    className="app-content"
-                >
-                    <Header />
-                    <SmoothScroll>
-                        <main>
-                            <Page />
-                        </main>
-                        <Footer />
-                    </SmoothScroll>
-                </motion.div>
-            </AnimatePresence>
-
-            <AnimatePresence>
-                {showCurtain && (
-                    <motion.div
-                        key="curtain"
-                        className="fixed inset-0 bg-black z-[9999] pointer-events-none"
-                        initial="initial"
-                        animate="animate"
-                        exit="exit"
-                        variants={curtainVariants}
-                        onAnimationComplete={handleCurtainAnimationComplete}
-                    />
-                )}
-            </AnimatePresence>
-        </>
+        <AnimatePresence mode="wait">
+            <motion.div
+                key={location.pathname}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3, delay: isCurtainVisible ? 0.6 : 0 }}
+            >
+                {outlet}
+            </motion.div>
+        </AnimatePresence>
     );
 };

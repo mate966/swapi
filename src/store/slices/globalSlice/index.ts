@@ -4,10 +4,10 @@ import { GlobalState } from './types';
 
 const initialState: GlobalState = {
     isPageLoaded: false,
+    isIntroCompleted: false,
     isCurtainVisible: false,
-    isExitCompleted: false,
     displayedLocation: {
-        pathname: '/',
+        pathname: window.location.pathname,
         search: '',
         hash: '',
         state: null,
@@ -22,11 +22,11 @@ const globalSlice = createSlice({
         setIsPageLoaded: (state, action: PayloadAction<boolean>) => {
             state.isPageLoaded = action.payload;
         },
+        setIsIntroCompleted: (state, action: PayloadAction<boolean>) => {
+            state.isIntroCompleted = action.payload;
+        },
         setIsCurtainVisible: (state, action: PayloadAction<boolean>) => {
             state.isCurtainVisible = action.payload;
-        },
-        setIsExitCompleted: (state, action: PayloadAction<boolean>) => {
-            state.isExitCompleted = action.payload;
         },
         setDisplayedLocation: (state, action: PayloadAction<Location>) => {
             state.displayedLocation = action.payload;
@@ -34,6 +34,6 @@ const globalSlice = createSlice({
     },
 });
 
-export const { setIsPageLoaded, setIsCurtainVisible, setIsExitCompleted, setDisplayedLocation } =
+export const { setIsPageLoaded, setIsIntroCompleted, setIsCurtainVisible, setDisplayedLocation } =
     globalSlice.actions;
 export default globalSlice.reducer;

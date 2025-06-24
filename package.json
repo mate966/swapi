@@ -13,7 +13,11 @@
         "stylelint": "stylelint \"**/*.{css,scss}\"",
         "stylelint:fix": "stylelint \"**/*.{css,scss}\" --fix",
         "preview": "vite preview",
-        "prepare": "husky"
+        "prepare": "husky",
+        "test": "vitest",
+        "test:ui": "vitest --ui",
+        "test:run": "vitest run",
+        "test:coverage": "vitest run --coverage"
     },
     "lint-staged": {
         "*.{js,jsx,ts,tsx}": [
@@ -52,6 +56,10 @@
         "@typescript-eslint/eslint-plugin": "^8.32.0",
         "@typescript-eslint/parser": "^8.32.0",
         "@vitejs/plugin-react": "^4.4.1",
+        "@vitest/ui": "^2.1.8",
+        "@testing-library/jest-dom": "^6.6.3",
+        "@testing-library/react": "^16.1.0",
+        "@testing-library/user-event": "^14.5.2",
         "autoprefixer": "^10.4.17",
         "eslint": "^9.25.0",
         "eslint-config-prettier": "^10.1.2",
@@ -61,6 +69,7 @@
         "eslint-plugin-react-refresh": "^0.4.19",
         "globals": "^16.0.0",
         "husky": "^9.1.7",
+        "jsdom": "^25.0.1",
         "lint-staged": "^15.5.2",
         "postcss": "^8.4.35",
         "prettier": "^3.5.3",
@@ -74,6 +83,7 @@
         "typescript": "~5.8.3",
         "typescript-eslint": "^8.30.1",
         "vite": "^6.3.5",
-        "vite-plugin-graphql-loader": "^4.0.4"
+        "vite-plugin-graphql-loader": "^4.0.4",
+        "vitest": "^2.1.8"
     }
 }

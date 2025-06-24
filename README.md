@@ -1,6 +1,6 @@
 # SWAPI Platform
 
-**SWAPI Platform** is a full-stack web application combining a modern frontend built with React and Vite, and a backend powered by Payload CMS and Next.js. The project aims to deliver an interactive Star Wars data explorer using the public SWAPI API, with features like filtering, ratings, favorites, comments, and authentication.
+**SWAPI Platform** is a full-stack web application combining a modern frontend built with React and Vite, and a backend ( https://github.com/mate966/swapi-backend ) powered by Payload CMS and Next.js. The project aims to deliver an interactive Star Wars data explorer using the public SWAPI API, with features like filtering, ratings, favorites, comments, and authentication.
 
 ## 🔧 Tech Stack
 
